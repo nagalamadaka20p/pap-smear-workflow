@@ -1,0 +1,28 @@
+.survey-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.survey-container ol{
+    align-items: left;
+    text-align: left;
+}
+
+.survey-container li{
+    padding: 10px;
+    padding-left: 0px;
+}
+
+.question {
+    padding: 15px;
+}
+
+input{
+    padding: 5px;
+}
