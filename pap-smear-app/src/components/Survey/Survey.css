@@ -1,12 +1,22 @@
-.survey-container {
+.survey {
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: left;
-  margin-left: 30%;
-  margin-right: 30%;
   margin-top: 20px;
   margin-bottom: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.survey h2{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+    margin: 10px;
+    text-align: left;
+    color: #6f3a3a;
 }
 
 .survey-container ol{
@@ -16,7 +26,9 @@
 
 .survey-container li{
     padding: 10px;
-    padding-left: 0px;
+    padding-left: 20px;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 .question {
@@ -25,4 +37,20 @@
 
 input{
     padding: 5px;
+    border: 2px solid #6f3a3a;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 20px;
+}
+
+select{
+    padding: 10px;
+    border: 2px solid #6f3a3a;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 20px;
 }

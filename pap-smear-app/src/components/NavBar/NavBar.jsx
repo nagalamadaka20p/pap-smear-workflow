@@ -10,7 +10,13 @@ function NavBar({
           <ul>
             <div className="navbar-container">
                 <li className="menuhover">
-                <h2>Home</h2>
+                <h2>PROVIDERS</h2>
+                </li>
+                <li className="menuhover">
+                <h2>SURVEY</h2>
+                </li>
+                <li className="menuhover">
+                <h2>HOME</h2>
                 </li>
             </div>
           </ul>
