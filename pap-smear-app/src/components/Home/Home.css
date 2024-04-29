@@ -4,3 +4,12 @@
     margin-right: auto;
     max-width: 900px;
 }
+
+.home ul{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.home li{
+    padding: 10px;
+}
