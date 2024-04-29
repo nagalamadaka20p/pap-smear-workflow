@@ -8,17 +8,17 @@ function NavBar() {
       <nav>
         <ul>
           <div className="navbar-container">
-            <Link to="/providers" className="menuhover">
+            <Link to="/pap-smear-workflow/providers" className="menuhover">
               <li>
                 <h2>PROVIDERS</h2>
               </li>
             </Link>
-            <Link to="/survey" className="menuhover">
+            <Link to="/pap-smear-workflow/survey" className="menuhover">
               <li>
                 <h2>SURVEY</h2>
               </li>
             </Link>
-            <Link to="/" className="menuhover">
+            <Link to="/pap-smear-workflow/" className="menuhover">
               <li>
                 <h2>HOME</h2>
               </li>

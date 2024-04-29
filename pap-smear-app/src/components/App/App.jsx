@@ -14,9 +14,9 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/survey" element={<Banner />} />
-          <Route path="/providers" element={<Providers />} />
+          <Route path="/pap-smear-workflow/" element={<Home />} />
+          <Route path="/pap-smear-workflow/survey" element={<Banner />} />
+          <Route path="/pap-smear-workflow/providers" element={<Providers />} />
         </Routes>
       </BrowserRouter>
     </div>

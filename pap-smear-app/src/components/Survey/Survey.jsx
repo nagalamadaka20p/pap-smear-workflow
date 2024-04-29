@@ -34,6 +34,9 @@ function Survey() {
       positiveHPVAnswer: troubleshooting.positiveHPVAnswer,
       normalHPVAnswer: troubleshooting.normalHPVAnswer,
       papNormalAnswer: troubleshooting.papNormalAnswer,
+      last12pap: troubleshooting.last12pap,
+      last12papresult: troubleshooting.last12papresult,
+      last12papresultabnormal: troubleshooting.last12papresultabnormal,
     };
     newForm[key] = val;
     setTroubleshooting(newForm);
@@ -90,9 +93,83 @@ function Survey() {
               ageGroup === "over65") &&
               troubleshooting.hivAnswer === "yes" && (
                 <div className="question">
-                  <p>HIV algorithm</p>
+                  <li>Was your last Pap smear within the last 12 months?</li>
+                  <select
+                    name="last12pap"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.last12pap}
+                    onChange={(e) => {
+                      handleOnTroubleshootingChange(
+                        "last12pap",
+                        e.target.value
+                      );
+                    }}
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
                 </div>
               )}
+            {troubleshooting.last12pap === "yes" && (
+              <div className="question">
+                <li>Do you have the result of your Pap smear?</li>
+                <select
+                  name="last12papresult"
+                  className="troubleshooting-dropdown"
+                  value={troubleshooting.last12papresult}
+                  onChange={(e) => {
+                    handleOnTroubleshootingChange(
+                      "last12papresult",
+                      e.target.value
+                    );
+                  }}
+                >
+                  <option value="">Select an Option</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            )}
+            {troubleshooting.last12papresult === "yes" && (
+              <div className="question">
+                <li>Was it abnormal?</li>
+                <p>
+                  Normal Pap smear results will have the following acronym or
+                  words on them: Negative for intraepithelial lesion, NIL.
+                  Abnormal Pap smear results will have the following acronyms or
+                  words on them: ASCUS (atypical squamous cells of undetermined
+                  significance), LSIL/LGSIL (low grade squamous intraepithelial
+                  lesion), HSIL/HGSIL (high grade squamous intraepithelial
+                  lesion), ASC-H (atypical squamous cells), AGC (atypical
+                  glandular cells)
+                </p>
+                <select
+                  name="last12papresultabnormal"
+                  className="troubleshooting-dropdown"
+                  value={troubleshooting.last12papresultabnormal}
+                  onChange={(e) => {
+                    handleOnTroubleshootingChange(
+                      "last12papresultabnormal",
+                      e.target.value
+                    );
+                  }}
+                >
+                  <option value="">Select an Option</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            )}
+            {troubleshooting.last12papresultabnormal === "no" && (
+              <div className="question">
+                <p>
+                  You are due 12 months from your prior Pap smear. Please see
+                  the provider tab for resources to see a medical provider if
+                  you do not have one
+                </p>
+              </div>
+            )}
             {(ageGroup === "21-29" || ageGroup === "over65") &&
               troubleshooting.hivAnswer === "no" && (
                 <div className="question">
@@ -147,7 +224,53 @@ function Survey() {
             )}
             {troubleshooting.cervixAnswer === "no" && (
               <div className="question">
-                <p>No cervix algorithm</p>
+                <li>
+                  Have you ever been diagnosed with pre-cancer of the cervix or
+                  had biopsies of your cervix? You may have heard the procedure
+                  be called a LEEP or a “Cone”. If you are unsure, we recommend
+                  you contact your provider to check.{" "}
+                </li>
+                <select
+                  name="dysplasiaAnswer"
+                  className="troubleshooting-dropdown"
+                  value={troubleshooting.dysplasiaAnswer}
+                  onChange={(e) => {
+                    handleOnTroubleshootingChange(
+                      "dysplasiaAnswer",
+                      e.target.value
+                    );
+                  }}
+                >
+                  <option value="">Select an Option</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            )}
+            {troubleshooting.dysplasiaAnswer === "yes" && (
+              <div className="question">
+                <p>
+                  If you have a history of pre-cancer of the cervix you should
+                  continue to have Pap smears once a year for up to 20 years
+                  after hysterectomy. Please see{" "}
+                  <Link to="/providers" className="menuhover">
+                    {" "}
+                    this page
+                  </Link>
+                  for resources below to see a medical provider.
+                </p>
+              </div>
+            )}
+            {troubleshooting.dysplasiaAnswer === "no" && (
+              <div className="question">
+                <p>
+                It is possible you don't need any more Pap smears if you've always had normal Pap smears. It is recommended to continue having regular pelvic exams at least every 2 years as there is still a risk for other conditions such as cancer of the ovary. Please see{" "}
+                  <Link to="/providers" className="menuhover">
+                    {" "}
+                    this page
+                  </Link>
+                  for resources below to see a medical provider.
+                </p>
               </div>
             )}
             {troubleshooting.cervixAnswer === "yes" &&
@@ -261,7 +384,9 @@ function Survey() {
               </div>
             )}
             {(troubleshooting.papAnswer === "over3" ||
-              troubleshooting.papAnswer === "over5") && (
+              troubleshooting.papAnswer === "over5" ||
+              troubleshooting.last12pap === "no" ||
+              troubleshooting.last12papresultabnormal === "yes") && (
               <div className="question">
                 <p>
                   You are likely due now or overdue for follow-up. Please see{" "}
@@ -488,7 +613,8 @@ function Survey() {
                 </p>
               </div>
             )}
-            {troubleshooting.documentationAnswer === "no" && (
+            {(troubleshooting.documentationAnswer === "no" ||
+              troubleshooting.last12papresult === "no") && (
               <div className="question">
                 <p>You can get your Pap smear results a few different ways. </p>
                 <ol>
