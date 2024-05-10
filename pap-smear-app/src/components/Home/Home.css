@@ -13,3 +13,28 @@
 .home li{
     padding: 10px;
 }
+
+.question button {
+    background-color: #dfeff0;
+    color: #00909a;
+    border: none;
+    border-radius: 50%; /* Set border-radius to make the button circular */
+    cursor: pointer;
+    font-size: 20px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 300;
+    display: inline;
+    width: 30px; /* Adjust width and height as needed */
+    height: 30px;
+    line-height: 1; /* Ensure proper alignment of content */
+  }
+  
+
+.home h2 {
+    display: inline; /* Make <h2> elements inline */
+    margin-right: 10px; /* Add some space between <h2> and buttons */
+}
+
+.question{
+    margin-bottom: 20px;
+}

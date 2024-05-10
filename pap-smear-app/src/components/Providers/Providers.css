@@ -21,11 +21,11 @@ text-align: left;
 
 .medical-providers-table th {
 
-background-color: #ad9191;
+background-color: #c1e3e6;
 }
 
 .medical-providers-table tr:nth-child(even) {
-background-color: #f3f5ee;
+background-color: #e3f6f8;
 }
 
 .medical-providers-table tr:hover {

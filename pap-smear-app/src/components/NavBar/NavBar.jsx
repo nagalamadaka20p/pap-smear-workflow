@@ -7,23 +7,26 @@ function NavBar() {
     <div className="navbar">
       <nav>
         <ul>
-          <div className="navbar-container">
-            <Link to="/pap-smear-workflow/providers" className="menuhover">
-              <li>
-                <h2>PROVIDERS</h2>
-              </li>
-            </Link>
-            <Link to="/pap-smear-workflow/survey" className="menuhover">
-              <li>
-                <h2>SURVEY</h2>
-              </li>
-            </Link>
-            <Link to="/pap-smear-workflow/" className="menuhover">
-              <li>
-                <h2>HOME</h2>
-              </li>
-            </Link>
-          </div>
+          <Link to="/pap-smear-workflow/glossary">
+            <li className="menuhover1">
+              <h2>GLOSSARY</h2>
+            </li>
+          </Link>
+          <Link to="/pap-smear-workflow/faq">
+            <li className="menuhover2">
+              <h2>FAQ</h2>
+            </li>
+          </Link>
+          <Link to="/pap-smear-workflow/">
+            <li className="menuhover3">
+              <h2>SURVEY</h2>
+            </li>
+          </Link>
+          <Link to="/pap-smear-workflow/providers">
+            <li className="menuhover4">
+              <h2>PROVIDERS</h2>
+            </li>
+          </Link>
         </ul>
       </nav>
     </div>

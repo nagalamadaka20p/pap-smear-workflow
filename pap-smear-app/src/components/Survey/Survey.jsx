@@ -83,7 +83,7 @@ function Survey() {
                 <p>
                   Great news! You are not due to start screening until you're 21
                   years old. If you would still like to see a medical provider
-                  for another reason please see resources on the other pages.
+                  for another reason please click on the Providers tab.
                 </p>
               </div>
             )}
@@ -135,15 +135,31 @@ function Survey() {
               <div className="question">
                 <li>Was it abnormal?</li>
                 <p>
-                  Normal Pap smear results will have the following acronym or
-                  words on them: Negative for intraepithelial lesion, NIL.
-                  Abnormal Pap smear results will have the following acronyms or
-                  words on them: ASCUS (atypical squamous cells of undetermined
-                  significance), LSIL/LGSIL (low grade squamous intraepithelial
-                  lesion), HSIL/HGSIL (high grade squamous intraepithelial
-                  lesion), ASC-H (atypical squamous cells), AGC (atypical
-                  glandular cells)
+                  Normal Pap smear results will have the following acronyms or
+                  words on them:{" "}
                 </p>
+                <ul>
+                  <li>Negative for intraepithelial lesion, NIL.</li>
+                </ul>
+                <p>
+                  Abnormal Pap smear results will have the following acronyms or
+                  words on them:
+                </p>
+                <ul>
+                  <li>
+                    ASCUS (atypical squamous cells of undetermined significance)
+                  </li>
+                  <li>
+                    LSIL/LGSIL (low grade squamous intraepithelial lesion)
+                  </li>{" "}
+                  <li>
+                    {" "}
+                    HSIL/HGSIL (high grade squamous intraepithelial lesion)
+                  </li>{" "}
+                  <li> ASC-H (atypical squamous cells)</li>{" "}
+                  <li> AGC (atypical glandular cells)</li>
+                </ul>
+
                 <select
                   name="last12papresultabnormal"
                   className="troubleshooting-dropdown"
@@ -204,7 +220,8 @@ function Survey() {
             )} */}
             {ageGroup === "30-65" && troubleshooting.hivAnswer === "no" && (
               <div className="question">
-                <li>Do you have a cervix? Describe hysterectomy types?</li>
+                <li>Do you have a cervix?</li>
+                <p> Even if you had a hysterectomy, you may still have a cervix and need Pap smears. The easiest way to confirm that you do not have a cervix is to check with your surgeon or to undergo a pelvic exam. </p>
                 <select
                   name="cervixAnswer"
                   className="troubleshooting-dropdown"
@@ -264,7 +281,11 @@ function Survey() {
             {troubleshooting.dysplasiaAnswer === "no" && (
               <div className="question">
                 <p>
-                It is possible you don't need any more Pap smears if you've always had normal Pap smears. It is recommended to continue having regular pelvic exams at least every 2 years as there is still a risk for other conditions such as cancer of the ovary. Please see{" "}
+                  It is possible you don't need any more Pap smears if you've
+                  always had normal Pap smears. It is recommended to continue
+                  having regular pelvic exams at least every 2 years as there is
+                  still a risk for other conditions such as cancer of the ovary.
+                  Please see{" "}
                   <Link to="/providers" className="menuhover">
                     {" "}
                     this page
@@ -291,7 +312,11 @@ function Survey() {
                     <option value="">Select an Option</option>
                     <option value="more3">
                       {" "}
-                      more than 3 years before 65th birthday/never{" "}
+                      never
+                    </option>
+                    <option value="more3">
+                      {" "}
+                      more than 3 years before 65th birthday
                     </option>
                     <option value="between13">
                       {" "}
@@ -358,8 +383,10 @@ function Survey() {
                   <option value="under3"> less than 3 years </option>
                   <option value="between35"> between 3 and 5 years</option>
                   <option value="over5">
-                    more than 5 years or never or can't remember
+                    more than 5 years
                   </option>
+                  <option value="over5">never</option>
+                  <option value="over5">can't remember</option>
                 </select>
               </div>
             )}
@@ -375,11 +402,19 @@ function Survey() {
                   }}
                 >
                   <option value="">Select an Option</option>
+                  <option value="under3"> less than 3 years </option>
                   <option value="over3">
                     {" "}
-                    over 3 years or never or can't remember
+                    over 3 years
                   </option>
-                  <option value="under3"> less than 3 years </option>
+                  <option value="over3">
+                    {" "}
+                    never
+                  </option>
+                  <option value="over3">
+                    {" "}
+                    can't remember
+                  </option>
                 </select>
               </div>
             )}
@@ -481,7 +516,15 @@ function Survey() {
               troubleshooting.papAnswer === "between35" && (
                 <div className="question">
                   <p>
-                    Insert things explaining how to understand documentation
+                    Normal Pap smear results will have the following acronym or
+                    words on them: Negative for intraepithelial lesion, NIL. In
+                    addition, if you had HPV testing, it will be negative
+                    Abnormal Pap smear results will have the following acronyms
+                    or words on them: ASCUS (atypical squamous cells of
+                    undetermined significance), LSIL/LGSIL (low grade squamous
+                    intraepithelial lesion), HSIL/HGSIL (high grade squamous
+                    intraepithelial lesion), ASC-H (atypical squamous cells),
+                    AGC (atypical glandular cells)
                   </p>
                   <li>Did you have HPV testing with your last pap smear?</li>
                   <select

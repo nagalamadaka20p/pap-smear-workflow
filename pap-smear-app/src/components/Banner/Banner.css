@@ -13,17 +13,17 @@
     font-size: 2em;
     margin: 0;
     text-align: center;
-    padding: 1em;
+    padding: 40px;
     font-family: 'Noto Sans', sans-serif;
     font-weight: 250;
-    color: #6f3a3a;
+    color: #00909a;
     font-weight: bold;
 }
 
 .banner p{
-    font-size: 1.5em;
+    font-size: 1.1em;
     margin: 0;
     text-align: center;
-    padding: 30px;
+    padding: 7px;
     font-weight: 100;
 }

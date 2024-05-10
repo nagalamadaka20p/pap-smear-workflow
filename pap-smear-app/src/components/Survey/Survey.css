@@ -16,7 +16,7 @@
     font-size: 30px;
     margin: 10px;
     text-align: left;
-    color: #6f3a3a;
+    color: #00909a;
 }
 
 .survey p {
@@ -41,7 +41,7 @@
 
 input{
     padding: 5px;
-    border: 2px solid #6f3a3a;
+    border: 2px solid #00909a;
     border-radius: 5px;
     text-decoration: none;
     font-size: 20px;
@@ -51,7 +51,7 @@ input{
 
 select{
     padding: 10px;
-    border: 2px solid #6f3a3a;
+    border: 2px solid #00909a;
     border-radius: 5px;
     text-decoration: none;
     font-size: 16px;
