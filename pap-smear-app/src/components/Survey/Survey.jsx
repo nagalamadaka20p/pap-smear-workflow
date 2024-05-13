@@ -3,7 +3,23 @@ import "./Survey.css";
 import { Link } from "react-router-dom";
 
 function Survey() {
-  const [troubleshooting, setTroubleshooting] = useState({});
+  const initialFormState = {
+    age: "",
+    hivAnswer: "",
+    cervixAnswer: "",
+    papAnswer: "",
+    documentationAnswer: "",
+    normalDocAnswer: "",
+    prevHPVAnswer: "",
+    positiveHPVAnswer: "",
+    normalHPVAnswer: "",
+    papNormalAnswer: "",
+    last12pap: "",
+    last12papresult: "",
+    last12papresultabnormal: "",
+    dysplasiaAnswer: "",
+  };
+  const [troubleshooting, setTroubleshooting] = useState(initialFormState);
   const [ageGroup, setAgeGroup] = useState("");
 
   const handleAgeChange = (event) => {
@@ -22,31 +38,81 @@ function Survey() {
     }
   };
 
+  // function handleOnTroubleshootingChange(key, val) {
+  //   let newForm = {
+  //     age: troubleshooting.age,
+  //     hivAnswer: troubleshooting.hivAnswer,
+  //     cervixAnswer: troubleshooting.cervixAnswer,
+  //     papAnswer: troubleshooting.papAnswer,
+  //     documentationAnswer: troubleshooting.documentationAnswer,
+  //     normalDocAnswer: troubleshooting.normalDocAnswer,
+  //     prevHPVAnswer: troubleshooting.prevHPVAnswer,
+  //     positiveHPVAnswer: troubleshooting.positiveHPVAnswer,
+  //     normalHPVAnswer: troubleshooting.normalHPVAnswer,
+  //     papNormalAnswer: troubleshooting.papNormalAnswer,
+  //     last12pap: troubleshooting.last12pap,
+  //     last12papresult: troubleshooting.last12papresult,
+  //     last12papresultabnormal: troubleshooting.last12papresultabnormal,
+  //   };
+  //   newForm[key] = val;
+  //   setTroubleshooting(newForm);
+  // }
+
   function handleOnTroubleshootingChange(key, val) {
-    let newForm = {
-      age: troubleshooting.age,
-      hivAnswer: troubleshooting.hivAnswer,
-      cervixAnswer: troubleshooting.cervixAnswer,
-      papAnswer: troubleshooting.papAnswer,
-      documentationAnswer: troubleshooting.documentationAnswer,
-      normalDocAnswer: troubleshooting.normalDocAnswer,
-      prevHPVAnswer: troubleshooting.prevHPVAnswer,
-      positiveHPVAnswer: troubleshooting.positiveHPVAnswer,
-      normalHPVAnswer: troubleshooting.normalHPVAnswer,
-      papNormalAnswer: troubleshooting.papNormalAnswer,
-      last12pap: troubleshooting.last12pap,
-      last12papresult: troubleshooting.last12papresult,
-      last12papresultabnormal: troubleshooting.last12papresultabnormal,
-    };
-    newForm[key] = val;
-    setTroubleshooting(newForm);
+    console.log("troubleshooting before", troubleshooting);
+    const resetKeys = [
+      "age",
+      "hivAnswer",
+      "cervixAnswer",
+      "papAnswer",
+      "documentationAnswer",
+      "normalDocAnswer",
+      "prevHPVAnswer",
+      "positiveHPVAnswer",
+      "normalHPVAnswer",
+      "papNormalAnswer",
+      "last12pap",
+      "last12papresult",
+      "last12papresultabnormal",
+      "dysplasiaAnswer",
+    ];
+    const resetIndex = resetKeys.indexOf(key);
+    console.log("key, val", key, val);
+    console.log("resetIndex", resetIndex);
+    if (resetIndex !== -1) {
+      // Reset subsequent questions
+      setTroubleshooting((prevState) => {
+        const newForm = { ...prevState };
+        resetKeys.slice(resetIndex + 1).forEach((resetKey) => {
+          newForm[resetKey] = "";
+        });
+        console.log("newForm", newForm);
+        return newForm;
+      });
+    }
+
+    // Update the modified question
+    setTroubleshooting((prevState) => ({
+      ...prevState,
+      [key]: val,
+    }));
+
+    console.log("troubleshooting after", troubleshooting);
   }
+
+  const handleResetForm = () => {
+    setTroubleshooting(initialFormState); // Reset form to initial state
+    setAgeGroup(""); // Reset age group
+  };
 
   return (
     <div className="survey">
       <form>
         <h2>Survey</h2>
         <div className="survey-container">
+          <button type="button" onClick={handleResetForm}>
+            Reset Survey
+          </button>
           <ol>
             <div className="question">
               <li>How old are you?</li>
@@ -221,7 +287,13 @@ function Survey() {
             {ageGroup === "30-65" && troubleshooting.hivAnswer === "no" && (
               <div className="question">
                 <li>Do you have a cervix?</li>
-                <p> Even if you had a hysterectomy, you may still have a cervix and need Pap smears. The easiest way to confirm that you do not have a cervix is to check with your surgeon or to undergo a pelvic exam. </p>
+                <p>
+                  {" "}
+                  Even if you had a hysterectomy, you may still have a cervix
+                  and need Pap smears. The easiest way to confirm that you do
+                  not have a cervix is to check with your surgeon or to undergo
+                  a pelvic exam.{" "}
+                </p>
                 <select
                   name="cervixAnswer"
                   className="troubleshooting-dropdown"
@@ -310,10 +382,7 @@ function Survey() {
                     }}
                   >
                     <option value="">Select an Option</option>
-                    <option value="more3">
-                      {" "}
-                      never
-                    </option>
+                    <option value="more3"> never</option>
                     <option value="more3">
                       {" "}
                       more than 3 years before 65th birthday
@@ -382,9 +451,7 @@ function Survey() {
                   <option value="">Select an Option</option>
                   <option value="under3"> less than 3 years </option>
                   <option value="between35"> between 3 and 5 years</option>
-                  <option value="over5">
-                    more than 5 years
-                  </option>
+                  <option value="over5">more than 5 years</option>
                   <option value="over5">never</option>
                   <option value="over5">can't remember</option>
                 </select>
@@ -403,18 +470,9 @@ function Survey() {
                 >
                   <option value="">Select an Option</option>
                   <option value="under3"> less than 3 years </option>
-                  <option value="over3">
-                    {" "}
-                    over 3 years
-                  </option>
-                  <option value="over3">
-                    {" "}
-                    never
-                  </option>
-                  <option value="over3">
-                    {" "}
-                    can't remember
-                  </option>
+                  <option value="over3"> over 3 years</option>
+                  <option value="over3"> never</option>
+                  <option value="over3"> can't remember</option>
                 </select>
               </div>
             )}
@@ -540,7 +598,8 @@ function Survey() {
                   >
                     <option value="">Select an Option</option>
                     <option value="yes">yes</option>
-                    <option value="no">no/don't know</option>
+                    <option value="no">no</option>
+                    <option value="cantremember">can't remember</option>
                   </select>
                 </div>
               )}
@@ -565,13 +624,12 @@ function Survey() {
                   </select>
                 </div>
               )}
-            {troubleshooting.prevHPVAnswer === "no" && (
+            {(troubleshooting.prevHPVAnswer === "no" || troubleshooting.prevHPVAnswer === "cantremember")  && (
               <div className="question">
                 <p>
-                  Yes: insert how to interpret results, a few examples of
-                  reports, and definitions
+                You are likely due now or overdue for follow-up. Please see below for resources below to see a medical provider if you do not have one. 
                 </p>
-                <li>Were your HPV results normal?</li>
+                {/* <li>Were your HPV results normal?</li>
                 <select
                   name="normalHPVAnswer"
                   className="troubleshooting-dropdown"
@@ -586,7 +644,7 @@ function Survey() {
                   <option value="">Select an Option</option>
                   <option value="yes">yes</option>
                   <option value="no">no/don't know</option>
-                </select>
+                </select> */}
               </div>
             )}
             {troubleshooting.positiveHPVAnswer === "yes" && (
