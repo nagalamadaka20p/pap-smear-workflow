@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/pap-smear-workflow/static/css/main.4e93ea27.css",
-    "main.js": "/pap-smear-workflow/static/js/main.b7ed8a53.js",
+    "main.css": "/pap-smear-workflow/static/css/main.ae383fad.css",
+    "main.js": "/pap-smear-workflow/static/js/main.6187a317.js",
     "static/js/453.e1d0eb09.chunk.js": "/pap-smear-workflow/static/js/453.e1d0eb09.chunk.js",
     "static/media/logo.svg": "/pap-smear-workflow/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/pap-smear-workflow/index.html",
-    "main.4e93ea27.css.map": "/pap-smear-workflow/static/css/main.4e93ea27.css.map",
-    "main.b7ed8a53.js.map": "/pap-smear-workflow/static/js/main.b7ed8a53.js.map",
+    "main.ae383fad.css.map": "/pap-smear-workflow/static/css/main.ae383fad.css.map",
+    "main.6187a317.js.map": "/pap-smear-workflow/static/js/main.6187a317.js.map",
     "453.e1d0eb09.chunk.js.map": "/pap-smear-workflow/static/js/453.e1d0eb09.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e93ea27.css",
-    "static/js/main.b7ed8a53.js"
+    "static/css/main.ae383fad.css",
+    "static/js/main.6187a317.js"
   ]
 }
