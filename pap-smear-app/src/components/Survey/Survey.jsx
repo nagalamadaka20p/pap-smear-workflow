@@ -59,7 +59,6 @@ function Survey() {
   // }
 
   function handleOnTroubleshootingChange(key, val) {
-    console.log("troubleshooting before", troubleshooting);
     const resetKeys = [
       "age",
       "hivAnswer",
@@ -77,8 +76,6 @@ function Survey() {
       "dysplasiaAnswer",
     ];
     const resetIndex = resetKeys.indexOf(key);
-    console.log("key, val", key, val);
-    console.log("resetIndex", resetIndex);
     if (resetIndex !== -1) {
       // Reset subsequent questions
       setTroubleshooting((prevState) => {
@@ -86,7 +83,6 @@ function Survey() {
         resetKeys.slice(resetIndex + 1).forEach((resetKey) => {
           newForm[resetKey] = "";
         });
-        console.log("newForm", newForm);
         return newForm;
       });
     }
@@ -96,8 +92,6 @@ function Survey() {
       ...prevState,
       [key]: val,
     }));
-
-    console.log("troubleshooting after", troubleshooting);
   }
 
   const handleResetForm = () => {
@@ -342,7 +336,7 @@ function Survey() {
                   If you have a history of pre-cancer of the cervix you should
                   continue to have Pap smears once a year for up to 20 years
                   after hysterectomy. Please see{" "}
-                  <Link to="/providers" className="menuhover">
+                  <Link to="/pap-smear-workflow/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>
@@ -358,7 +352,7 @@ function Survey() {
                   having regular pelvic exams at least every 2 years as there is
                   still a risk for other conditions such as cancer of the ovary.
                   Please see{" "}
-                  <Link to="/providers" className="menuhover">
+                  <Link to="/pap-smear-workflow/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>
@@ -382,7 +376,7 @@ function Survey() {
                     }}
                   >
                     <option value="">Select an Option</option>
-                    <option value="more3"> never</option>
+                    <option value="never"> never</option>
                     <option value="more3">
                       {" "}
                       more than 3 years before 65th birthday
@@ -397,11 +391,17 @@ function Survey() {
                   </select>
                 </div>
               )}
-            {troubleshooting.papAnswer === "more3" && ageGroup === "over65" && (
-              <div className="question">
-                <p>Likely due now</p>
-              </div>
-            )}
+            {(troubleshooting.papAnswer === "more3" ||
+              troubleshooting.papAnswer === "never") &&
+              ageGroup === "over65" && (
+                <div className="question">
+                  <p>
+                    You are likely due now or overdue for follow-up. Please see
+                    below for resources below to see a medical provider if you
+                    do not have one.
+                  </p>
+                </div>
+              )}
             {(troubleshooting.papAnswer === "between13" ||
               troubleshooting.papAnswer === "less1") &&
               ageGroup === "over65" && (
@@ -452,8 +452,8 @@ function Survey() {
                   <option value="under3"> less than 3 years </option>
                   <option value="between35"> between 3 and 5 years</option>
                   <option value="over5">more than 5 years</option>
-                  <option value="over5">never</option>
-                  <option value="over5">can't remember</option>
+                  <option value="never">never</option>
+                  <option value="cantremember">can't remember</option>
                 </select>
               </div>
             )}
@@ -471,19 +471,21 @@ function Survey() {
                   <option value="">Select an Option</option>
                   <option value="under3"> less than 3 years </option>
                   <option value="over3"> over 3 years</option>
-                  <option value="over3"> never</option>
-                  <option value="over3"> can't remember</option>
+                  <option value="never"> never</option>
+                  <option value="cantremember"> can't remember</option>
                 </select>
               </div>
             )}
             {(troubleshooting.papAnswer === "over3" ||
               troubleshooting.papAnswer === "over5" ||
               troubleshooting.last12pap === "no" ||
-              troubleshooting.last12papresultabnormal === "yes") && (
+              troubleshooting.last12papresultabnormal === "yes" ||
+              troubleshooting.papAnswer === "never" ||
+              troubleshooting.papAnswer === "cantremember") && (
               <div className="question">
                 <p>
                   You are likely due now or overdue for follow-up. Please see{" "}
-                  <Link to="/providers" className="menuhover">
+                  <Link to="/pap-smear-workflow/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>{" "}
@@ -624,10 +626,13 @@ function Survey() {
                   </select>
                 </div>
               )}
-            {(troubleshooting.prevHPVAnswer === "no" || troubleshooting.prevHPVAnswer === "cantremember")  && (
+            {(troubleshooting.prevHPVAnswer === "no" ||
+              troubleshooting.prevHPVAnswer === "cantremember") && (
               <div className="question">
                 <p>
-                You are likely due now or overdue for follow-up. Please see below for resources below to see a medical provider if you do not have one. 
+                  You are likely due now or overdue for follow-up. Please see
+                  below for resources below to see a medical provider if you do
+                  not have one.
                 </p>
                 {/* <li>Were your HPV results normal?</li>
                 <select
@@ -692,7 +697,7 @@ function Survey() {
               <div className="question">
                 <p>
                   You are likely due now or overdue for follow-up. Please see{" "}
-                  <Link to="/providers" className="menuhover">
+                  <Link to="/pap-smear-workflow/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>{" "}
@@ -705,7 +710,7 @@ function Survey() {
               <div className="question">
                 <p>
                   You are due 3 years from your prior Pap smear. Please see{" "}
-                  <Link to="/providers" className="menuhover">
+                  <Link to="/pap-smear-workflow/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>{" "}

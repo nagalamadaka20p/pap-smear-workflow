@@ -1,37 +1,39 @@
 /* CSS */
 .medical-providers-table {
-    font-family: Arial, sans-serif;
-    border-collapse: collapse;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 100;
+  border-collapse: collapse;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
-.medical-providers-table table{
-    margin-left: auto;
-    margin-right: auto;
+.medical-providers-table table {
+  margin-left: auto;
+  margin-right: auto;
 }
-  
-.medical-providers-table th, .medical-providers-table td {
-border: 1px solid #8d8d8d;
-padding: 8px;
-text-align: left;
+
+.medical-providers-table th,
+.medical-providers-table td {
+  border: 1px solid #8d8d8d;
+  padding: 8px;
+  text-align: left;
 }
 
 .medical-providers-table th {
-
-background-color: #c1e3e6;
+  background-color: #c1e3e6;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .medical-providers-table tr:nth-child(even) {
-background-color: #e3f6f8;
+  background-color: #e3f6f8;
 }
 
 .medical-providers-table tr:hover {
-background-color: #ddd;
+  background-color: #ddd;
 }
 
-.medical-providers-table h1{
-    padding: 10px;
+.medical-providers-table h1 {
+  padding: 10px;
 }

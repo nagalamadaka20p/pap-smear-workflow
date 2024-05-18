@@ -15,3 +15,18 @@ h2{
   font-size: 30px;
   color: #00a6b2;
 }
+
+p{
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  color: black;
+  line-height: 1.25em;
+}
+
+li{
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  color: black;
+}
