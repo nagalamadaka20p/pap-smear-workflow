@@ -1,6 +1,7 @@
 import React from 'react';
 import './Banner.css';
 import Survey from '../Survey/Survey';
+import NavBar from '../NavBar/NavBar';
 
 const Banner = () => {
     return (

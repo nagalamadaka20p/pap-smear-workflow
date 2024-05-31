@@ -38,3 +38,45 @@
 .question{
     margin-bottom: 20px;
 }
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 220px;
+    }
+  
+    .home h1 {
+      font-size: 30px;
+      padding: 20px;
+    }
+  
+    .home p {
+      font-size: 20px;
+      padding: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .home {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 170px;
+    }
+  
+    .home h1 {
+      font-size: 24px;
+      padding: 10px;
+    }
+  
+    .home p {
+      font-size: 20px;
+      padding: 2px;
+    }
+  }
+  

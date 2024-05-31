@@ -4,32 +4,22 @@ import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div className="navbar">
-      <nav>
-        <ul>
-          <Link to="/pap-smear-workflow/glossary">
-            <li className="menuhover1">
-              <h2>GLOSSARY</h2>
-            </li>
-          </Link>
-          <Link to="/pap-smear-workflow/faq">
-            <li className="menuhover2">
-              <h2>FAQ</h2>
-            </li>
-          </Link>
-          <Link to="/pap-smear-workflow/">
-            <li className="menuhover3">
-              <h2>SURVEY</h2>
-            </li>
-          </Link>
-          <Link to="/pap-smear-workflow/providers">
-            <li className="menuhover4">
-              <h2>PROVIDERS</h2>
-            </li>
-          </Link>
-        </ul>
-      </nav>
-    </div>
+    <nav className="navbar">
+      <div className="table-row">
+        <Link to="/pap-smear-workflow/" className="menuhover1 table-cell">
+          <h2>SURVEY</h2>
+        </Link>
+        <Link to="/pap-smear-workflow/providers" className="menuhover2 table-cell">
+          <h2>PROVIDERS</h2>
+        </Link>
+        <Link to="/pap-smear-workflow/faq" className="menuhover3 table-cell">
+          <h2>FAQ</h2>
+        </Link>
+        <Link to="/pap-smear-workflow/glossary" className="menuhover4 table-cell">
+          <h2>GLOSSARY</h2>
+        </Link>
+      </div>
+    </nav>
   );
 }
 
