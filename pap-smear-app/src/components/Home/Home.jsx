@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 
-const Home = () => {
+const Home = ({glossary, handleHover, handleMouseOut}) => {
   const [showHPVAnswer, setShowHPVAnswer] = useState(false);
   const [showGardasilAnswer, setShowGardasilAnswer] = useState(false);
   const [showCervicalPreCancerAnswer, setShowCervicalPreCancerAnswer] =
@@ -26,12 +26,16 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Do I need a pap smear?</h1>
+      <h1>Do I need a Pap smear?</h1>
       <p>
         A Pap smear is a sampling of cells from the surface of the cervix (the
         entrance to the uterus) to screen for early cervical cancer. It is
         performed by a medical provider who can perform a pelvic exam. It is not
-        always performed with every pelvic exam. Please watch video below for
+        always performed with every <u
+          className="glossary-term"
+          onMouseOver={handleHover}
+          onMouseOut={handleMouseOut}
+        >pelvic exam</u>. Please watch video below for
         more information.
       </p>
       <p>

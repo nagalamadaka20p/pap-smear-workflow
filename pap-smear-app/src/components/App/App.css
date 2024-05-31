@@ -30,3 +30,31 @@ li{
   font-size: 18px;
   color: black;
 }
+
+.tooltip {
+  position: absolute;
+  top: -30px;
+  left: 100%;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  color: black;
+  width: 200px;
+}
+
+.glossary-term {
+  position: relative;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out; /* Define transitions for background-color, color, and text-decoration-color */
+}
+
+.glossary-term:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+  color: #000; /* Change text color on hover */
+  text-decoration-color: #000; /* Change text decoration color on hover */
+}

@@ -1,42 +1,61 @@
-.glossary{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+.glossary {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.glossary ul{
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-    text-align: left;
+.glossary ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
 }
 
-.glossary li{
-    padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
-    font-size: 20px;
-    font-family: "Work Sans", sans-serif;
-    font-weight: 300;
-    cursor: pointer;
-    text-align: left;
+.glossary li {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 20px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  cursor: pointer;
+  text-align: left;
 }
 
-.term{
-    font-weight: 500;
-    font-size: 25px;
-    font-family: "Work Sans", sans-serif;
-    color: #00a6b2;
-    display: inline;
-    text-align: left;
+.term {
+  font-weight: 500;
+  font-size: 25px;
+  font-family: "Work Sans", sans-serif;
+  color: #00a6b2;
+  display: inline;
+  text-align: left;
 }
 
+.tooltip {
+  position: absolute;
+  top: -30px;
+  left: 100%;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  color: black;
+}
+
+.glossary-term {
+  position: relative;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

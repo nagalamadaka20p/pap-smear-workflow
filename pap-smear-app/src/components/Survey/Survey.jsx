@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Survey.css";
 import { Link } from "react-router-dom";
 
-function Survey() {
+function Survey({ glossary, handleHover, handleMouseOut }) {
   const initialFormState = {
     age: "",
     hivAnswer: "",
@@ -123,7 +123,15 @@ function Survey() {
             </div>
             <div className="question">
               <li>
-                Have you been diagnosed with HIV (human immunodeficiency virus)?
+                Have you been diagnosed with{" "}
+                <u
+                  className="glossary-term"
+                  onMouseOver={handleHover}
+                  onMouseOut={handleMouseOut}
+                >
+                  Human Immunodeficiency Virus (HIV)
+                </u>
+                ?
               </li>
               <select
                 name="hivAnswer"
@@ -249,12 +257,37 @@ function Survey() {
             {(ageGroup === "21-29" || ageGroup === "over65") &&
               troubleshooting.hivAnswer === "no" && (
                 <div className="question">
-                  <li>Do you have a cervix?</li>
+                  <li>
+                    Do you have a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      cervix
+                    </u>
+                    ?
+                  </li>
                   <p>
-                    Even if you had a hysterectomy, you may still have a cervix
-                    and need Pap smears. The easiest way to confirm that you do
-                    not have a cervix is to check with your surgeon or to
-                    undergo a pelvic exam.{" "}
+                    Even if you had a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      hysterectomy
+                    </u>
+                    , you may still have a cervix and need Pap smears. The
+                    easiest way to confirm that you do not have a cervix is to
+                    check with your surgeon or to undergo a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      pelvic exam
+                    </u>
+                    .{" "}
                   </p>
                   <select
                     name="cervixAnswer"
@@ -309,9 +342,21 @@ function Survey() {
               <div className="question">
                 <li>
                   Have you ever been diagnosed with pre-cancer of the cervix or
-                  had biopsies of your cervix? You may have heard the procedure
-                  be called a LEEP or a “Cone”. If you are unsure, we recommend
-                  you contact your provider to check.{" "}
+                  had a <u
+                    className="glossary-term"
+                    onMouseOver={handleHover}
+                    onMouseOut={handleMouseOut}
+                  >biopsy</u> of your cervix? You may have heard the procedure
+                  be called a{" "}
+                  <u
+                    className="glossary-term"
+                    onMouseOver={handleHover}
+                    onMouseOut={handleMouseOut}
+                  >
+                    LEEP
+                  </u>{" "}
+                  or a “Cone”. If you are unsure, we recommend you contact your
+                  provider to check.{" "}
                 </li>
                 <select
                   name="dysplasiaAnswer"
@@ -336,11 +381,14 @@ function Survey() {
                   If you have a history of pre-cancer of the cervix you should
                   continue to have Pap smears once a year for up to 20 years
                   after hysterectomy. Please see{" "}
-                  <Link to="/pap-smear-workflow/providers" className="menuhover">
+                  <Link
+                    to="/pap-smear-workflow/providers"
+                    className="menuhover"
+                  >
                     {" "}
                     this page
                   </Link>
-                  for resources below to see a medical provider.
+                  {" "} for resources below to see a medical provider.
                 </p>
               </div>
             )}
@@ -352,7 +400,10 @@ function Survey() {
                   having regular pelvic exams at least every 2 years as there is
                   still a risk for other conditions such as cancer of the ovary.
                   Please see{" "}
-                  <Link to="/pap-smear-workflow/providers" className="menuhover">
+                  <Link
+                    to="/pap-smear-workflow/providers"
+                    className="menuhover"
+                  >
                     {" "}
                     this page
                   </Link>
@@ -485,7 +536,10 @@ function Survey() {
               <div className="question">
                 <p>
                   You are likely due now or overdue for follow-up. Please see{" "}
-                  <Link to="/pap-smear-workflow/providers" className="menuhover">
+                  <Link
+                    to="/pap-smear-workflow/providers"
+                    className="menuhover"
+                  >
                     {" "}
                     this page
                   </Link>{" "}
@@ -697,7 +751,10 @@ function Survey() {
               <div className="question">
                 <p>
                   You are likely due now or overdue for follow-up. Please see{" "}
-                  <Link to="/pap-smear-workflow/providers" className="menuhover">
+                  <Link
+                    to="/pap-smear-workflow/providers"
+                    className="menuhover"
+                  >
                     {" "}
                     this page
                   </Link>{" "}
@@ -710,7 +767,10 @@ function Survey() {
               <div className="question">
                 <p>
                   You are due 3 years from your prior Pap smear. Please see{" "}
-                  <Link to="/pap-smear-workflow/providers" className="menuhover">
+                  <Link
+                    to="/pap-smear-workflow/providers"
+                    className="menuhover"
+                  >
                     {" "}
                     this page
                   </Link>{" "}
