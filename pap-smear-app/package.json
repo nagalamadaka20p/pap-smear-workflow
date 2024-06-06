@@ -1,8 +1,8 @@
 {
   "name": "pap-smear-app",
   "version": "0.1.0",
-  "homepage": "https://nagalamadaka20p.github.io/pap-smear-workflow/",
   "private": true,
+  "homepage": "/pap-smear-workflow",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
