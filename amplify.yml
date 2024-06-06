@@ -1,0 +1,18 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - cd pap-smear-app
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: pap-smear-app/build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - pap-smear-app/node_modules/**/*
+
