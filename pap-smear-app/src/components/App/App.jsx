@@ -85,7 +85,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter basename="/pap-smear-workflow">
+      <BrowserRouter>
         <NavBar />
         <Routes>
           <Route
