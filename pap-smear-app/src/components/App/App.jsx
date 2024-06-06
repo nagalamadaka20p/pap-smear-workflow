@@ -85,19 +85,19 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/pap-smear-workflow">
         <NavBar />
         <Routes>
           <Route
-            path="/pap-smear-workflow/"
+            path="/"
             element={<Banner glossary={glossary} handleHover={handleHover}
             handleMouseOut={handleMouseOut}/>}
           />
-          <Route path="/pap-smear-workflow/faq" element={<Home glossary={glossary} handleHover={handleHover}
+          <Route path="/faq" element={<Home glossary={glossary} handleHover={handleHover}
             handleMouseOut={handleMouseOut}/>} />
-          <Route path="/pap-smear-workflow/providers" element={<Providers />} />
+          <Route path="/providers" element={<Providers />} />
           <Route
-            path="/pap-smear-workflow/glossary"
+            path="/glossary"
             element={
               <Glossary
                 glossary={glossary}
