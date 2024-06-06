@@ -277,9 +277,17 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       hysterectomy
                     </u>
-                    , you may still have a cervix and need Pap smears. The
-                    easiest way to confirm that you do not have a cervix is to
-                    check with your surgeon or to undergo a{" "}
+                    , you may still have a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      cervix
+                    </u>{" "}
+                    and need Pap smears. The easiest way to confirm that you do
+                    not have a cervix is to check with your surgeon or to
+                    undergo a{" "}
                     <u
                       className="glossary-term"
                       onMouseOver={handleHover}
@@ -313,13 +321,25 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             )} */}
             {ageGroup === "30-65" && troubleshooting.hivAnswer === "no" && (
               <div className="question">
-                <li>Do you have a cervix?</li>
+                <li>Do you have a <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >cervix?</u></li>
                 <p>
                   {" "}
-                  Even if you had a hysterectomy, you may still have a cervix
+                  Even if you had a <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >hysterectomy</u>, you may still have a cervix
                   and need Pap smears. The easiest way to confirm that you do
                   not have a cervix is to check with your surgeon or to undergo
-                  a pelvic exam.{" "}
+                  a <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >pelvic exam</u>.{" "}
                 </p>
                 <select
                   name="cervixAnswer"
@@ -342,12 +362,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               <div className="question">
                 <li>
                   Have you ever been diagnosed with pre-cancer of the cervix or
-                  had a <u
+                  had a{" "}
+                  <u
                     className="glossary-term"
                     onMouseOver={handleHover}
                     onMouseOut={handleMouseOut}
-                  >biopsy</u> of your cervix? You may have heard the procedure
-                  be called a{" "}
+                  >
+                    biopsy
+                  </u>{" "}
+                  of your cervix? You may have heard the procedure be called a{" "}
                   <u
                     className="glossary-term"
                     onMouseOver={handleHover}
@@ -380,15 +403,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   If you have a history of pre-cancer of the cervix you should
                   continue to have Pap smears once a year for up to 20 years
-                  after hysterectomy. Please see{" "}
+                  after <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >hysterectomy</u>. Please see{" "}
                   <Link
                     to="/pap-smear-workflow/providers"
                     className="menuhover"
                   >
                     {" "}
                     this page
-                  </Link>
-                  {" "} for resources below to see a medical provider.
+                  </Link>{" "}
+                  for resources below to see a medical provider.
                 </p>
               </div>
             )}
@@ -397,7 +424,11 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   It is possible you don't need any more Pap smears if you've
                   always had normal Pap smears. It is recommended to continue
-                  having regular pelvic exams at least every 2 years as there is
+                  having regular <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >pelvic exams</u> at least every 2 years as there is
                   still a risk for other conditions such as cancer of the ovary.
                   Please see{" "}
                   <Link
