@@ -409,7 +409,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       onMouseOut={handleMouseOut}
                     >hysterectomy</u>. Please see{" "}
                   <Link
-                    to="/pap-smear-workflow/providers"
+                    to="/providers"
                     className="menuhover"
                   >
                     {" "}
@@ -432,7 +432,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   still a risk for other conditions such as cancer of the ovary.
                   Please see{" "}
                   <Link
-                    to="/pap-smear-workflow/providers"
+                    to="/providers"
                     className="menuhover"
                   >
                     {" "}
@@ -568,7 +568,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   You are likely due now or overdue for follow-up. Please see{" "}
                   <Link
-                    to="/pap-smear-workflow/providers"
+                    to="/providers"
                     className="menuhover"
                   >
                     {" "}
@@ -783,7 +783,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   You are likely due now or overdue for follow-up. Please see{" "}
                   <Link
-                    to="/pap-smear-workflow/providers"
+                    to="/providers"
                     className="menuhover"
                   >
                     {" "}
@@ -799,7 +799,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   You are due 3 years from your prior Pap smear. Please see{" "}
                   <Link
-                    to="/pap-smear-workflow/providers"
+                    to="/providers"
                     className="menuhover"
                   >
                     {" "}
