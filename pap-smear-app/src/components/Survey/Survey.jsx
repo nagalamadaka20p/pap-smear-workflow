@@ -445,7 +445,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {troubleshooting.cervixAnswer === "yes" &&
               ageGroup === "over65" && (
                 <div className="question">
-                  <li>When was your last pap smear?</li>
+                  <li>When was your last pap smear? </li>
                   <select
                     name="papAnswer"
                     className="troubleshooting-dropdown"
