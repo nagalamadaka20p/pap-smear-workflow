@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./Home.css";
 
-const Home = ({glossary, handleHover, handleMouseOut}) => {
+const Home = ({ glossary, handleHover, handleMouseOut }) => {
   const [showHPVAnswer, setShowHPVAnswer] = useState(false);
   const [showGardasilAnswer, setShowGardasilAnswer] = useState(false);
-  const [showCervicalPreCancerAnswer, setShowCervicalPreCancerAnswer] =
-    useState(false);
+  const [showCervicalPreCancerAnswer, setShowCervicalPreCancerAnswer] = useState(false);
   const [showPortalAnswer, setShowPortalAnswer] = useState(false);
 
   const toggleHPVAnswer = () => {
@@ -51,7 +50,7 @@ const Home = ({glossary, handleHover, handleMouseOut}) => {
           {showHPVAnswer ? "-" : "+"}
         </button>
         {showHPVAnswer && (
-          <p>
+          <p className={`answer-paragraph ${showHPVAnswer ? "show" : ""}`}>
             HPV or human papillomavirus is a virus that the majority of people are
             exposed to in their lifetime, and is usually transmitted sexually. It
             is known to be the cause of most cases of cervical cancer. It can also
@@ -68,7 +67,7 @@ const Home = ({glossary, handleHover, handleMouseOut}) => {
           {showGardasilAnswer ? "-" : "+"}
         </button>
         {showGardasilAnswer && (
-          <div className="answer">
+          <div className={`answer ${showGardasilAnswer ? "show" : ""}`}>
             <p>
               GARDASIL 9 helps protect individuals ages 9 to 45 against the
               following diseases caused by 9 types of HPV: cervical, vaginal, and
@@ -127,7 +126,7 @@ const Home = ({glossary, handleHover, handleMouseOut}) => {
           {showCervicalPreCancerAnswer ? "-" : "+"}
         </button>
         {showCervicalPreCancerAnswer && (
-          <p>
+          <p className={`answer-paragraph ${showCervicalPreCancerAnswer ? "show" : ""}`}>
             When there are cervical cells that look abnormal but are not yet
             cancerous, it is called <i>cervical precancer</i>. These abnormal
             cells may be the first sign of cancer that develops years later.
@@ -143,7 +142,7 @@ const Home = ({glossary, handleHover, handleMouseOut}) => {
           {showPortalAnswer ? "-" : "+"}
         </button>
         {showPortalAnswer && (
-          <>
+          <div className={`answer ${showPortalAnswer ? "show" : ""}`}>
             <p>
               A patient portal is a secure online website that gives patients
               convenient, 24-hour access to personal health information from
@@ -181,7 +180,7 @@ const Home = ({glossary, handleHover, handleMouseOut}) => {
                 LINK
               </a>
             </p>
-          </>
+          </div>
         )}
       </div>
     </div>

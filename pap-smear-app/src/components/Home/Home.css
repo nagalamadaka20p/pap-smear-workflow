@@ -10,6 +10,10 @@
     margin-left: 10px;
 }
 
+.home h1{
+  font-size: 3em;
+}
+
 .home li{
     padding: 10px;
 }
@@ -37,6 +41,17 @@
 
 .question{
     margin-bottom: 20px;
+}
+
+.answer, .answer-paragraph {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+.answer.show, .answer-paragraph.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 

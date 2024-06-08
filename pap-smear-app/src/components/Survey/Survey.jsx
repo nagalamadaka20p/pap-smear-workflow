@@ -105,7 +105,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
         <h2>Survey</h2>
         <div className="survey-container">
           <button type="button" onClick={handleResetForm}>
-            Reset Survey
+            Reset
           </button>
           <ol>
             <div className="question">

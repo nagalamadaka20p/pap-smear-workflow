@@ -10,7 +10,7 @@
 }
 
 .banner h1{
-    font-size: 2em;
+    font-size: 3em;
     margin: 0;
     text-align: center;
     padding: 40px;
@@ -18,14 +18,54 @@
     font-weight: 250;
     color: #00909a;
     font-weight: bold;
+    overflow: hidden; /* Ensures the hidden part of the text is not visible */
+    white-space: nowrap; /* Prevents the text from wrapping to the next line */
+    animation: animate 1s linear forwards; 
 }
 
-.banner p{
+@keyframes animate { 
+  0% { 
+      width: 0; 
+      opacity: 0.25; 
+  } 
+  100% { 
+      width: 100%; 
+      opacity: 1; 
+  } 
+}
+
+.paragraph{
     font-size: 1.1em;
     margin: 0;
     text-align: center;
     padding: 7px;
     font-weight: 100;
+    animation: animateParagraphs 1s linear forwards;
+    animation-delay: 1s;
+    visibility: hidden;
+}
+
+.paragraph:nth-of-type(1) {
+  animation-delay: 1s; /* Delay to match the title animation duration */
+}
+
+.paragraph:nth-of-type(2) {
+  animation-delay: 2s; /* Starts after the first paragraph */
+}
+
+.paragraph:nth-of-type(3) {
+  animation-delay: 3s; /* Starts after the second paragraph */
+}
+
+@keyframes animateParagraphs { 
+  0% { 
+      opacity: 0; 
+      visibility: visible;
+  } 
+  100% { 
+      opacity: 1; 
+      visibility: visible;
+  } 
 }
 
 /* Responsive Design */
