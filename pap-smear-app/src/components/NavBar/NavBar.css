@@ -25,11 +25,28 @@
   text-align: center;
   vertical-align: middle;
   background-color: white;
+  position: relative; /* Required for the ::after pseudo-element */
 }
 
-/* .navbar .table-cell:hover {
-  background-color: #cdcdcd;
-} */
+/* Remove the background color change on hover */
+.navbar .table-cell:hover {
+  background-color: white; /* Ensures no background color change */
+}
+
+.navbar .table-cell::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px; /* Height of the underline */
+  background-color: #00909a; /* Color of the underline */
+  transition: width 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+.navbar .table-cell:hover::after {
+  width: 100%; /* Full width on hover */
+}
 
 .navbar h2 {
   margin: 0;
@@ -46,20 +63,20 @@
 }
 
 /* Different solid colors for each tab */
-.menuhover1:hover {
-  background-color: #e3f6f8; /* Lightest color */
+.menuhover1:hover::after {
+  background-color: #e3f6f8; /* Lightest color underline */
 }
 
-.menuhover2:hover {
-  background-color: #c1e3e6; /* Slightly darker */
+.menuhover2:hover::after {
+  background-color: #c1e3e6; /* Slightly darker underline */
 }
 
-.menuhover3:hover {
-  background-color: #00a6b2; /* Even darker */
+.menuhover3:hover::after {
+  background-color: #00a6b2; /* Even darker underline */
 }
 
-.menuhover4:hover {
-  background-color: #00909a; /* Darkest color */
+.menuhover4:hover::after {
+  background-color: #00909a; /* Darkest color underline */
 }
 
 /* Responsive Design */
@@ -90,4 +107,3 @@
     font-size: 18px;
   }
 }
-
