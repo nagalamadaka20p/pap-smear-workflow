@@ -2,15 +2,37 @@ import React from 'react';
 import './Providers.css';
 
 const Providers = () => {
+
   const providers = [
     {
       provider: "Lifespan Ob/Gyn",
-      locations: "Providence, East Greenwich, North Attelboro, East Providence",
+      locations: "Providence",
       phoneNumber: "401-606-3000",
       addresses: [
-        "148 W River St Suite 8, Providence, RI 02904",
-        "1377 South County Trail Unit 2A, East Greenwich, RI 02818",
-        "6 Whipple Street, North Attleboro, MA 02760",
+        "148 W River St Suite 8, Providence, RI 02904"
+      ]
+    },
+    {
+      provider: "Lifespan Ob/Gyn",
+      locations: "East Greenwich",
+      phoneNumber: "401-606-3000",
+      addresses: [
+        "1377 South County Trail Unit 2A, East Greenwich, RI 02818"
+      ]
+    },
+    {
+      provider: "Lifespan Ob/Gyn",
+      locations: "North Attelboro",
+      phoneNumber: "401-606-3000",
+      addresses: [
+        "6 Whipple Street, North Attleboro, MA 02760"
+      ]
+    },
+    {
+      provider: "Lifespan Ob/Gyn",
+      locations: "East Providence",
+      phoneNumber: "401-606-3000",
+      addresses: [
         "900 Warren Avenue Suite 101, East Providence, RI 02914"
       ]
     },
@@ -28,20 +50,41 @@ const Providers = () => {
     },
     {
       provider: "Center for OB/GYN",
-      locations: "Providence, East Greewich",
+      locations: "Providence",
       phoneNumber: "401-490-6464",
       addresses: [
-        "297 Promenade St, Providence, RI 02908",
+        "297 Promenade St, Providence, RI 02908"
+      ]
+    },
+    {
+      provider: "Center for OB/GYN",
+      locations: "East Greewich",
+      phoneNumber: "401-490-6464",
+      addresses: [
         "1050 Main Street, East Greenwich, RI, 02818"
       ]
     },
     {
       provider: "Partners in Obstetrics and Gynecology",
-      locations: "Pawtucket, East Providence, East Greenwich",
+      locations: "Pawtucket",
       phoneNumber: "401-724-0600",
       addresses: [
         "333 SCHOOL STREET SUITE 205, Pawtucket, RI 02860",
-        "1525 WAMPANOAG TRAIL SUITE 201, East Providence, RI 02915",
+      ]
+    },
+    {
+      provider: "Partners in Obstetrics and Gynecology",
+      locations: "East Providence",
+      phoneNumber: "401-724-0600",
+      addresses: [
+        "1525 WAMPANOAG TRAIL SUITE 201, East Providence, RI 02915"
+      ]
+    },
+    {
+      provider: "Partners in Obstetrics and Gynecology",
+      locations: "East Greenwich",
+      phoneNumber: "401-724-0600",
+      addresses: [
         "1050 MAIN STREET, East Greenwich, RI 02818"
       ]
     },
@@ -101,6 +144,8 @@ const Providers = () => {
     }
   ];
 
+  providers.sort((a, b) => a.locations.localeCompare(b.locations));
+
   return (
     <div className="medical-providers-table">
       <h1>Medical Providers</h1>
@@ -108,9 +153,9 @@ const Providers = () => {
         <thead>
           <tr>
             <th>Provider</th>
-            <th>Location(s)</th>
+            <th>Location</th>
             <th>Phone Number</th>
-            <th>Address(es)</th>
+            <th>Address</th>
           </tr>
         </thead>
         <tbody>
@@ -120,7 +165,7 @@ const Providers = () => {
               <td>{provider.locations}</td>
               <td>{provider.phoneNumber}</td>
               <td>
-                <ul>
+                <ul className='providerAddresses'>
                   {provider.addresses.map((address, idx) => (
                     <li key={idx}>{address}</li>
                   ))}

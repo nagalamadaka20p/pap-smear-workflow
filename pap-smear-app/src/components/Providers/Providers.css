@@ -1,43 +1,62 @@
 /* CSS */
 .medical-providers-table {
   font-family: "Noto Sans", sans-serif;
-  font-weight: 100;
+  font-weight: 400; /* Adjusted font-weight for better readability */
   border-collapse: collapse;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.medical-providers-table table {
-  margin-left: auto;
-  margin-right: auto;
+  width: 60%; /* Increased width for better space utilization */
+  margin: 20px auto; /* Centered the table with some margin */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f9f8f8 0.8;
+  border-spacing: 0;
 }
 
 .medical-providers-table th,
 .medical-providers-table td {
-  border: 1px solid #8d8d8d;
-  padding: 8px;
+  border: 1px solid #ddd; /* Lightened border color for softer edges */
+  padding: 12px;
   text-align: left;
 }
 
+.medical-providers-table th{
+  background-color: #f2f2f2; /* Softened background color for headers */
+  font-size: 18px;
+}
+
 .medical-providers-table th {
-  background-color: #c1e3e6;
-  font-family: "Noto Sans", sans-serif;
+  background-color: #f2f2f2; /* Softened background color for headers */
+  font-weight: 500; /* Increased font-weight for headers */
+  color: #333; /* Adjusted text color for better contrast */
 }
 
 .medical-providers-table tr:nth-child(even) {
-  background-color: #e3f6f8;
+  background-color: #f0f8f8; /* Slightly lighter background for even rows */
 }
 
 .medical-providers-table tr:hover {
-  background-color: #ddd;
+  background-color: #f1f1f1; /* Light hover effect */
 }
 
 .medical-providers-table h1 {
-  padding: 10px;
+  text-align: center; /* Centered heading */
+  padding: 20px 0;
 }
 
+.providerAddresses {
+  list-style: none; /* Removed bullet points from addresses */
+  padding: 0;
+  margin: 8px 0;
+}
+
+.providerAddresses li {
+  margin-bottom: 4px;
+  line-height: 1.4; /* Improved spacing between address lines */
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

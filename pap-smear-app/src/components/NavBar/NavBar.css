@@ -7,6 +7,7 @@
   margin: 0;
   display: table;
   table-layout: fixed;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
 }
 
 .navbar .table-row {
@@ -40,7 +41,7 @@
   bottom: 0;
   width: 0;
   height: 2px; /* Height of the underline */
-  background-color: #00909a; /* Color of the underline */
+  background-color: #00909a; /* Default color of the underline */
   transition: width 0.3s ease-in-out; /* Smooth transition effect */
 }
 
