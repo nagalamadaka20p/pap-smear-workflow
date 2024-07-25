@@ -25,7 +25,7 @@ const Banner = ({ glossary, handleHover, handleMouseOut }) => {
         . 
       </p>
       <p className="paragraph">
-      Cervical cancer can cause symptoms ranging from minor bleeds to life threatening situations. However, by screening early, we can catch and treat cervical cancer before it
+      Cervical cancer can cause symptoms ranging from minor bleeds to life threatening situations. However, by screening early, we can catch and treat cervical cancer <i>before</i> it
       becomes a serious problem.
       </p>
       <p className="paragraph">

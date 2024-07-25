@@ -8,6 +8,11 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
     useState(false);
   const [showPortalAnswer, setShowPortalAnswer] = useState(false);
   const [showInsuranceAnswer, setShowInsuranceAnswer] = useState(false);
+  const [showWhatPapAnswer, setShowWhatPapAnswer] = useState(false);
+
+  const toggleWhatPapAnswer = () => {
+    setShowWhatPapAnswer(!showWhatPapAnswer);
+  };
 
   const toggleInsuranceAnswer = () => {
     setShowInsuranceAnswer(!showInsuranceAnswer);
@@ -30,9 +35,13 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
 
   return (
     <div className="home">
-      <h1>Do I need a Pap smear?</h1>
-      <p>
-        A Pap smear is a sampling of cells from the surface of the cervix (the
+      <h1>Frequently Asked Questions</h1>
+      <div className="question">
+        <h2>What is a Pap smear?</h2>
+        <button onClick={toggleWhatPapAnswer}>{showWhatPapAnswer ? "-" : "+"}</button>
+        {showWhatPapAnswer && (
+          <p className={`answer-paragraph ${showWhatPapAnswer ? "show" : ""}`}>
+            A Pap smear is a sampling of cells from the surface of the cervix (the
         entrance to the uterus) to screen for early cervical cancer. It is
         performed by a medical provider who can perform a pelvic exam. It is not
         always performed with every{" "}
@@ -42,22 +51,23 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
           onMouseOut={handleMouseOut}
         >
           pelvic exam
-        </u>.
-      </p>
-      <p>
+        </u>.  <p>
         <a href="https://www.acog.org/womens-health/videos/cervical-cancer-screening">
           Here
         </a>{" "}
         is a video with more info.{" "}
       </p>
+          </p>
+        )}
+      </div>
 
       <div className="question">
         <h2>Can I get a Pap smear if I am uninsured or low income?</h2>
         <button onClick={toggleInsuranceAnswer}>{showInsuranceAnswer ? "-" : "+"}</button>
         {showInsuranceAnswer && (
           <p className={`answer-paragraph ${showInsuranceAnswer ? "show" : ""}`}>
-            The Women's Cancer Screening Program in Rhode Island is working to reduce cases of cancer in women with limited access to healthcare. You can call their information line at 401-222-4324
-            or go to their website <a href="https://health.ri.gov/programs/womenscancerscreening/">here</a> for more information and eligibility.{" "}
+            The Women's Cancer Screening Program in Rhode Island is working to reduce the number of cases of cancer in women with limited access to healthcare. You can call their information line at 401-222-4324
+            or go to their website <a href="https://health.ri.gov/programs/womenscancerscreening/">here</a> for more information and eligibility guidelines.{" "}
           </p>
         )}
       </div>
