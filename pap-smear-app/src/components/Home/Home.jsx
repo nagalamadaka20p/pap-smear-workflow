@@ -7,7 +7,11 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
   const [showCervicalPreCancerAnswer, setShowCervicalPreCancerAnswer] =
     useState(false);
   const [showPortalAnswer, setShowPortalAnswer] = useState(false);
+  const [showInsuranceAnswer, setShowInsuranceAnswer] = useState(false);
 
+  const toggleInsuranceAnswer = () => {
+    setShowInsuranceAnswer(!showInsuranceAnswer);
+  };
   const toggleHPVAnswer = () => {
     setShowHPVAnswer(!showHPVAnswer);
   };
@@ -46,6 +50,17 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
         </a>{" "}
         is a video with more info.{" "}
       </p>
+
+      <div className="question">
+        <h2>Can I get a Pap smear if I am uninsured or low income?</h2>
+        <button onClick={toggleInsuranceAnswer}>{showInsuranceAnswer ? "-" : "+"}</button>
+        {showInsuranceAnswer && (
+          <p className={`answer-paragraph ${showInsuranceAnswer ? "show" : ""}`}>
+            The Women's Cancer Screening Program in Rhode Island is working to reduce cases of cancer in women with limited access to healthcare. You can call their information line at 401-222-4324
+            or go to their website <a href="https://health.ri.gov/programs/womenscancerscreening/">here</a> for more information and eligibility.{" "}
+          </p>
+        )}
+      </div>
 
       <div className="question">
         <h2>What is HPV?</h2>

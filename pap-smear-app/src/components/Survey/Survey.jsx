@@ -325,7 +325,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       className="glossary-term"
                       onMouseOver={handleHover}
                       onMouseOut={handleMouseOut}
-                    >cervix?</u></li>
+                    >cervix</u>?</li>
                 <p>
                   {" "}
                   Even if you had a <u
@@ -428,7 +428,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       className="glossary-term"
                       onMouseOver={handleHover}
                       onMouseOut={handleMouseOut}
-                    >pelvic exams</u> at least every 2 years as there is
+                    >pelvic exam</u>s at least every 2 years as there is
                   still a risk for other conditions such as cancer of the ovary.
                   Please see{" "}
                   <Link
@@ -436,7 +436,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     className="menuhover"
                   >
                     {" "}
-                    this page
+                    this page {" "}
                   </Link>
                   for resources below to see a medical provider.
                 </p>

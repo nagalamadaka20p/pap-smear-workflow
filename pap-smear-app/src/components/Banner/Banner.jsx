@@ -1,6 +1,7 @@
 import React from "react";
 import "./Banner.css";
 import Survey from "../Survey/Survey";
+import { Link } from "react-router-dom";
 
 const Banner = ({ glossary, handleHover, handleMouseOut }) => {
   return (
@@ -21,8 +22,11 @@ const Banner = ({ glossary, handleHover, handleMouseOut }) => {
         >
           cervical cancer
         </u>
-        . By screening early, we can catch and treat cervical cancer before it
-        becomes a serious problem.
+        . 
+      </p>
+      <p className="paragraph">
+      Cervical cancer can cause symptoms ranging from minor bleeds to life threatening situations. However, by screening early, we can catch and treat cervical cancer before it
+      becomes a serious problem.
       </p>
       <p className="paragraph">
         This website is intended to help you understand the current guidelines
@@ -32,7 +36,13 @@ const Banner = ({ glossary, handleHover, handleMouseOut }) => {
       </p>
       <p className="paragraph">
         This is not a substitute for expert medical care. If you need a provider
-        in Rhode Island for care, please click on the PROVIDERS tab. To begin,
+        in Rhode Island for care, please click <Link
+                    to="/providers"
+                    className="menuhover"
+                  >
+                    {" "}
+                    here
+                  </Link>. If you are uninsured or low income, click <a href="https://health.ri.gov/programs/womenscancerscreening/">here</a> for more information about the Women's Cancer Screening Program in Rhode Island. To begin,
         fill out the questions below.
       </p>
       <Survey glossary={glossary} handleHover={handleHover}
