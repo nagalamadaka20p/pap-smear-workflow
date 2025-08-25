@@ -121,37 +121,46 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 required
               ></input>
             </div>
-            <div className="question">
-              <li>
-                Have you been diagnosed with{" "}
-                <u
-                  className="glossary-term"
-                  onMouseOver={handleHover}
-                  onMouseOut={handleMouseOut}
+            {/* Show HIV question only after age is entered */}
+            {ageGroup && (
+              <div className="question">
+                <li>
+                  To the best of your knowledge, have you ever been diagnosed
+                  with{" "}
+                  <u
+                    className="glossary-term"
+                    onMouseOver={handleHover}
+                    onMouseOut={handleMouseOut}
+                  >
+                    Human Immunodeficiency Virus (HIV)
+                  </u>
+                  ?
+                </li>
+                <select
+                  name="hivAnswer"
+                  className="troubleshooting-dropdown"
+                  value={troubleshooting.hivAnswer}
+                  onChange={(e) => {
+                    handleOnTroubleshootingChange("hivAnswer", e.target.value);
+                  }}
                 >
-                  Human Immunodeficiency Virus (HIV)
-                </u>
-                ?
-              </li>
-              <select
-                name="hivAnswer"
-                className="troubleshooting-dropdown"
-                value={troubleshooting.hivAnswer}
-                onChange={(e) => {
-                  handleOnTroubleshootingChange("hivAnswer", e.target.value);
-                }}
-              >
-                <option value="">Select an Option</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
+                  <option value="">Select an Option</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            )}
             {ageGroup === "under21" && troubleshooting.hivAnswer === "no" && (
               <div className="question">
                 <p>
-                  Great news! You are not due to start screening until you're 21
-                  years old. If you would still like to see a medical provider
-                  for another reason please click on the Providers tab.
+                  Great news! You are not due to start cervical cancer screening
+                  until you're 21 years old. If you would still like to see a
+                  medical provider for another reason, please visit{" "}
+                  <Link to="/providers" className="menuhover">
+                    {" "}
+                    this list
+                  </Link>{" "}
+                  of providers in your area.
                 </p>
               </div>
             )}
@@ -257,6 +266,45 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {(ageGroup === "21-29" || ageGroup === "over65") &&
               troubleshooting.hivAnswer === "no" && (
                 <div className="question">
+                  <p>
+                    To develop cervical cancer, a person must have a cervix,
+                    which is a reproductive organ found only in individuals who
+                    are biologically female (have XX chromosomes). If you have a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      {" "}
+                      cervix
+                    </u>
+                    , you need regular Pap smears to screen for cervical cancer.
+                    If you have never had surgery on your uterus and you are
+                    female, you likely have a cervix. However, even if you had a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      hysterectomy
+                    </u>
+                    , you may still have a cervix and need Pap smears. The most
+                    accurate way to confirm that you have a cervix is to check
+                    with your surgeon or undergo a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      pelvic exam
+                    </u>{" "}
+                    with a provider. Click{" "}
+                    <Link to="/providers" className="menuhover">
+                      {" "}
+                      here
+                    </Link>{" "}
+                    if you need a provider.
+                  </p>
                   <li>
                     Do you have a{" "}
                     <u
@@ -268,35 +316,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     </u>
                     ?
                   </li>
-                  <p>
-                    Even if you had a{" "}
-                    <u
-                      className="glossary-term"
-                      onMouseOver={handleHover}
-                      onMouseOut={handleMouseOut}
-                    >
-                      hysterectomy
-                    </u>
-                    , you may still have a{" "}
-                    <u
-                      className="glossary-term"
-                      onMouseOver={handleHover}
-                      onMouseOut={handleMouseOut}
-                    >
-                      cervix
-                    </u>{" "}
-                    and need Pap smears. The easiest way to confirm that you do
-                    not have a cervix is to check with your surgeon or to
-                    undergo a{" "}
-                    <u
-                      className="glossary-term"
-                      onMouseOver={handleHover}
-                      onMouseOut={handleMouseOut}
-                    >
-                      pelvic exam
-                    </u>
-                    .{" "}
-                  </p>
+
                   <select
                     name="cervixAnswer"
                     className="troubleshooting-dropdown"
@@ -311,6 +331,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     <option value="">Select an Option</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
+                    <option value="no">I'm not sure</option>
                   </select>
                 </div>
               )}
@@ -321,26 +342,56 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             )} */}
             {ageGroup === "30-65" && troubleshooting.hivAnswer === "no" && (
               <div className="question">
-                <li>Do you have a <u
-                      className="glossary-term"
-                      onMouseOver={handleHover}
-                      onMouseOut={handleMouseOut}
-                    >cervix</u>?</li>
                 <p>
-                  {" "}
-                  Even if you had a <u
+                    To develop cervical cancer, a person must have a cervix,
+                    which is a reproductive organ found only in individuals who
+                    are biologically female (have XX chromosomes). If you have a{" "}
+                    <u
                       className="glossary-term"
                       onMouseOver={handleHover}
                       onMouseOut={handleMouseOut}
-                    >hysterectomy</u>, you may still have a cervix
-                  and need Pap smears. The easiest way to confirm that you do
-                  not have a cervix is to check with your surgeon or to undergo
-                  a <u
+                    >
+                      {" "}
+                      cervix
+                    </u>
+                    , you need regular Pap smears to screen for cervical cancer.
+                    If you have never had surgery on your uterus and you are
+                    female, you likely have a cervix. However, even if you had a{" "}
+                    <u
                       className="glossary-term"
                       onMouseOver={handleHover}
                       onMouseOut={handleMouseOut}
-                    >pelvic exam</u>.{" "}
-                </p>
+                    >
+                      hysterectomy
+                    </u>
+                    , you may still have a cervix and need Pap smears. The most
+                    accurate way to confirm that you have a cervix is to check
+                    with your surgeon or undergo a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      pelvic exam
+                    </u>{" "}
+                    with a provider. Click{" "}
+                    <Link to="/providers" className="menuhover">
+                      {" "}
+                      here
+                    </Link>{" "}
+                    if you need a provider.
+                  </p>
+                  <li>
+                    Do you have a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      cervix
+                    </u>
+                    ?
+                  </li>
                 <select
                   name="cervixAnswer"
                   className="troubleshooting-dropdown"
@@ -355,6 +406,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   <option value="">Select an Option</option>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
+                  <option value="no">I'm not sure</option>
                 </select>
               </div>
             )}
@@ -403,15 +455,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   If you have a history of pre-cancer of the cervix you should
                   continue to have Pap smears once a year for up to 20 years
-                  after <u
-                      className="glossary-term"
-                      onMouseOver={handleHover}
-                      onMouseOut={handleMouseOut}
-                    >hysterectomy</u>. Please see{" "}
-                  <Link
-                    to="/providers"
-                    className="menuhover"
+                  after{" "}
+                  <u
+                    className="glossary-term"
+                    onMouseOver={handleHover}
+                    onMouseOut={handleMouseOut}
                   >
+                    hysterectomy
+                  </u>
+                  . Please see{" "}
+                  <Link to="/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>{" "}
@@ -424,19 +477,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   It is possible you don't need any more Pap smears if you've
                   always had normal Pap smears. It is recommended to continue
-                  having regular <u
-                      className="glossary-term"
-                      onMouseOver={handleHover}
-                      onMouseOut={handleMouseOut}
-                    >pelvic exam</u>s at least every 2 years as there is
-                  still a risk for other conditions such as cancer of the ovary.
-                  Please see{" "}
-                  <Link
-                    to="/providers"
-                    className="menuhover"
+                  having regular{" "}
+                  <u
+                    className="glossary-term"
+                    onMouseOver={handleHover}
+                    onMouseOut={handleMouseOut}
                   >
+                    pelvic exam
+                  </u>
+                  s at least every 2 years as there is still a risk for other
+                  conditions such as cancer of the ovary. Please see{" "}
+                  <Link to="/providers" className="menuhover">
                     {" "}
-                    this page {" "}
+                    this page{" "}
                   </Link>
                   for resources below to see a medical provider.
                 </p>
@@ -445,7 +498,13 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {troubleshooting.cervixAnswer === "yes" &&
               ageGroup === "over65" && (
                 <div className="question">
-                  <li>When was your last pap smear? </li>
+                  <li>
+                    A Pap smear is a sampling of cells from the surface of the
+                    cervix to screen for early cervical cancer. This exam
+                    involves using a speculum so your doctor can see your
+                    cervix, and special types of brushes to collect the cells
+                    from your cervix. When was your last pap smear?{" "}
+                  </li>
                   <select
                     name="papAnswer"
                     className="troubleshooting-dropdown"
@@ -478,9 +537,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               ageGroup === "over65" && (
                 <div className="question">
                   <p>
-                    You are likely due now or overdue for follow-up. Please see
-                    below for resources below to see a medical provider if you
-                    do not have one.
+                    You are likely due now or overdue for cervical cancer
+                    screening. Please schedule an appointment with
+                    your healthcare provider for a Pap smear. If you do not have
+                    a provider, please see{" "}
+                    <Link to="/providers" className="menuhover">
+                      {" "}
+                      this page
+                    </Link>{" "}
+                    to find a medical provider in your area.
                   </p>
                 </div>
               )}
@@ -521,7 +586,13 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             )}
             {troubleshooting.cervixAnswer === "yes" && ageGroup === "30-65" && (
               <div className="question">
-                <li>When was your last pap smear?</li>
+                <li>
+                  A Pap smear is a sampling of cells from the surface of the
+                  cervix to screen for early cervical cancer. This exam involves
+                  using a speculum so your doctor can see your cervix, and
+                  special types of brushes to collect the cells from your
+                  cervix. When was your last pap smear?
+                </li>
                 <select
                   name="papAnswer"
                   className="troubleshooting-dropdown"
@@ -531,17 +602,28 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   }}
                 >
                   <option value="">Select an Option</option>
-                  <option value="under3"> less than 3 years </option>
-                  <option value="between35"> between 3 and 5 years</option>
-                  <option value="over5">more than 5 years</option>
-                  <option value="never">never</option>
-                  <option value="cantremember">can't remember</option>
+                  <option value="under3"> less than 3 years ago</option>
+                  <option value="between35"> between 3 and 5 years ago</option>
+                  <option value="over5">more than 5 years ago</option>
+                  <option value="never">I have never had a Pap smear</option>
+                  <option value="cantremember">
+                    I do not know if I have ever had a Pap smear
+                  </option>
+                  <option value="cantrememberpap">
+                    I can’t remember when I had my last Pap smear
+                  </option>
                 </select>
               </div>
             )}
             {troubleshooting.cervixAnswer === "yes" && ageGroup === "21-29" && (
               <div className="question">
-                <li>When was your last pap smear?</li>
+                <li>
+                  A Pap smear is a sampling of cells from the surface of the
+                  cervix to screen for early cervical cancer. This exam involves
+                  using a speculum so your doctor can see your cervix, and
+                  special types of brushes to collect the cells from your
+                  cervix. When was your last pap smear?
+                </li>
                 <select
                   name="papAnswer"
                   className="troubleshooting-dropdown"
@@ -551,10 +633,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   }}
                 >
                   <option value="">Select an Option</option>
-                  <option value="under3"> less than 3 years </option>
-                  <option value="over3"> over 3 years</option>
-                  <option value="never"> never</option>
-                  <option value="cantremember"> can't remember</option>
+                  <option value="under3"> less than 3 years ago</option>
+                  <option value="over3"> over 3 years ago</option>
+                  <option value="never"> I have never had a Pap smear</option>
+                  <option value="cantremember">
+                    I do not know if I have ever had a Pap smear
+                  </option>
+                  <option value="cantrememberpap">
+                    I can't remember when I had my last Pap smear
+                  </option>
                 </select>
               </div>
             )}
@@ -562,28 +649,106 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.papAnswer === "over5" ||
               troubleshooting.last12pap === "no" ||
               troubleshooting.last12papresultabnormal === "yes" ||
-              troubleshooting.papAnswer === "never" ||
-              troubleshooting.papAnswer === "cantremember") && (
+              troubleshooting.papAnswer === "never") && (
               <div className="question">
                 <p>
-                  You are likely due now or overdue for follow-up. Please see{" "}
-                  <Link
-                    to="/providers"
-                    className="menuhover"
-                  >
+                  {" "}
+                  You are likely due now or overdue for cervical cancer
+                  screening. Please schedule an appointment with your healthcare
+                  provider for a Pap smear. If you do not have a provider,
+                  please see{" "}
+                  <Link to="/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>{" "}
-                  for resources to see a medical provider if you do not have
-                  one.
+                  to find a medical provider in your area.
                 </p>
               </div>
             )}
-            {/* {troubleshooting.papAnswer === "over5" && (
+            {troubleshooting.papAnswer === "cantremember" && (
               <div className="question">
-                <p>High risk</p>
+                <p>
+                  There are a few ways to find out if you have ever had a Pap
+                  smear:
+                  <ol>
+                    <li>
+                      <b>Call your doctor:</b> You can call your doctor's office
+                      and ask if you have ever had a Pap smear. If so, you can
+                      have the result read to you or request a copy of your
+                      results via email, mail, or fax. You may need to sign a
+                      permission form.
+                    </li>
+                    <li>
+                      <b>Visit your doctor:</b> You can visit your doctor
+                      in-person to request a copy of your results via email,
+                      mail, or fax. You may need to sign a permission form.
+                    </li>
+                    <li>
+                      <b>Log into your online health portal:</b> You may also be
+                      able to access your records online through a patient
+                      portal. Each health care system has a different patient
+                      portal. These are sometimes called myChart or myResults.
+                      If you do not know how to access your patient portal, call
+                      your doctor's office. You can also search your email for
+                      an invitation to join the patient portal. If you have seen
+                      more than one doctor, you may have more than one patient
+                      portal, so you may need to check multiple patient portals
+                      to find your results.
+                    </li>
+                  </ol>
+                  If you are still unsure or you do not have a doctor, please
+                  see{" "}
+                  <Link to="/providers" className="menuhover">
+                    {" "}
+                    this page
+                  </Link>{" "}
+                  to find a medical provider in your area and schedule a Pap
+                  smear as soon as possible.
+                </p>
               </div>
-            )} */}
+            )}
+            {troubleshooting.papAnswer === "cantrememberpap" && (
+              <div className="question">
+                <p>
+                  There are a few ways to find out when you last had a Pap
+                  smear:
+                  <ol>
+                    <li>
+                      {" "}
+                      Call your doctor: You can call your doctor's office and
+                      ask. You can have your results read to you or request a
+                      copy via email, mail, or fax. You may need to sign a
+                      permission form.
+                    </li>
+                    <li>
+                      Visit your doctor: You can visit your doctor in-person to
+                      request a copy of your results via email, mail, or fax.
+                      You may need to sign a permission form.{" "}
+                    </li>
+                    <li>
+                      Log into your online health portal: You may also be able
+                      to access your records online through a patient portal.
+                      Each health care system has a different patient portal.
+                      These are sometimes called myChart or myResults. If you do
+                      not know how to access your patient portal, call your
+                      doctor's office. You can also search your email for an
+                      invitation to join the patient portal. If you have seen
+                      more than one doctor, you may have more than one patient
+                      portal, so you may need to check multiple patient portals
+                      to find your results.{" "}
+                    </li>
+                  </ol>
+                  If you are still unsure or you do not have a doctor, please
+                  see{" "}
+                  <Link to="/providers" className="menuhover">
+                    {" "}
+                    this page
+                  </Link>{" "}
+                  to find a medical provider in your area and schedule a Pap
+                  smear as soon as possible.
+                </p>
+              </div>
+            )}
             {troubleshooting.papAnswer === "between35" && (
               <div className="question">
                 <li>Do you have documentation of your results?</li>
@@ -606,7 +771,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             )}
             {troubleshooting.papAnswer === "under3" && (
               <div className="question">
-                <li>Do you have the result of your Pap smear?</li>
+                <li>Do you have the results of your most recent Pap smear?</li>
                 <select
                   name="documentationAnswer"
                   className="troubleshooting-dropdown"
@@ -629,16 +794,35 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <div className="question">
                   <p>
                     Normal Pap smear results will have the following acronym or
-                    words on them: Negative for intraepithelial lesion, NIL. In
-                    addition, if you had HPV testing, it will be negative
+                    words on them:
+                    <ul>
+                      <li>NIL (Negative for intraepithelial lesion)</li>
+                      <li>
+                        NILM (Negative for intraepithelial lesion or malignancy)
+                      </li>
+                      <li>If you had HPV testing, it will be negative</li>
+                    </ul>
                     Abnormal Pap smear results will have the following acronyms
-                    or words on them: ASCUS (atypical squamous cells of
-                    undetermined significance), LSIL/LGSIL (low grade squamous
-                    intraepithelial lesion), HSIL/HGSIL (high grade squamous
-                    intraepithelial lesion), ASC-H (atypical squamous cells),
-                    AGC (atypical glandular cells)
+                    or words on them:
+                    <ul>
+                      <li>
+                        ASCUS (atypical squamous cells of undetermined
+                        significance)
+                      </li>
+                      <li>
+                        LSIL/LGSIL (low grade squamous intraepithelial lesion)
+                      </li>
+                      <li>
+                        HSIL/HGSIL (high grade squamous intraepithelial lesion)
+                      </li>
+                      <li>ASC-H (atypical squamous cells)</li>
+                      <li>AGC (atypical glandular cells)</li>
+                      <li>
+                        If you had HPV testing, it may be positive or negative
+                      </li>
+                    </ul>
                   </p>
-                  <li>Is the documentation normal?</li>
+                  <li>Were your Pap smear results normal?</li>
                   <select
                     name="normalDocAnswer"
                     className="troubleshooting-dropdown"
@@ -662,14 +846,33 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <div className="question">
                   <p>
                     Normal Pap smear results will have the following acronym or
-                    words on them: Negative for intraepithelial lesion, NIL. In
-                    addition, if you had HPV testing, it will be negative
+                    words on them:
+                    <ul>
+                      <li>NIL (Negative for intraepithelial lesion)</li>
+                      <li>
+                        NILM (Negative for intraepithelial lesion or malignancy)
+                      </li>
+                      <li>If you had HPV testing, it will be negative</li>
+                    </ul>
                     Abnormal Pap smear results will have the following acronyms
-                    or words on them: ASCUS (atypical squamous cells of
-                    undetermined significance), LSIL/LGSIL (low grade squamous
-                    intraepithelial lesion), HSIL/HGSIL (high grade squamous
-                    intraepithelial lesion), ASC-H (atypical squamous cells),
-                    AGC (atypical glandular cells)
+                    or words on them:
+                    <ul>
+                      <li>
+                        ASCUS (atypical squamous cells of undetermined
+                        significance)
+                      </li>
+                      <li>
+                        LSIL/LGSIL (low grade squamous intraepithelial lesion)
+                      </li>
+                      <li>
+                        HSIL/HGSIL (high grade squamous intraepithelial lesion)
+                      </li>
+                      <li>ASC-H (atypical squamous cells)</li>
+                      <li>AGC (atypical glandular cells)</li>
+                      <li>
+                        If you had HPV testing, it may be positive or negative
+                      </li>
+                    </ul>
                   </p>
                   <li>Did you have HPV testing with your last pap smear?</li>
                   <select
@@ -715,9 +918,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.prevHPVAnswer === "cantremember") && (
               <div className="question">
                 <p>
-                  You are likely due now or overdue for follow-up. Please see
-                  below for resources below to see a medical provider if you do
-                  not have one.
+                  You are likely due now or overdue for cervical cancer
+                  screening. Please schedule an appointment with your
+                  healthcare provider for a Pap smear. If you do not have a
+                  provider, please see{" "}
+                  <Link to="/providers" className="menuhover">
+                    {" "}
+                    this page
+                  </Link>{" "}
+                  to find a medical provider in your area.
                 </p>
                 {/* <li>Were your HPV results normal?</li>
                 <select
@@ -781,32 +990,34 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {troubleshooting.normalDocAnswer === "no" && (
               <div className="question">
                 <p>
-                  You are likely due now or overdue for follow-up. Please see{" "}
-                  <Link
-                    to="/providers"
-                    className="menuhover"
-                  >
+                  You are likely due now or overdue for cervical cancer
+                  screening. Please schedule an appointment with your
+                  healthcare provider for a Pap smear. If you do not have a
+                  provider, please see{" "}
+                  <Link to="/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>{" "}
-                  for resources to see a medical provider if you do not have
-                  one.
+                  to find a medical provider in your area.
                 </p>
               </div>
             )}
             {troubleshooting.normalDocAnswer === "yes" && (
               <div className="question">
                 <p>
-                  You are due 3 years from your prior Pap smear. Please see{" "}
-                  <Link
-                    to="/providers"
-                    className="menuhover"
-                  >
+                  You are likely due for cervical cancer screening 3 years from
+                  the date of your last Pap smear. For example, if your most
+                  recent Pap smear was in January 2025, your next Pap smear
+                  would be in January 2028.
+                </p>
+                <p>
+                  If you do not have a provider, please see{" "}
+                  <Link to="/providers" className="menuhover">
                     {" "}
                     this page
                   </Link>{" "}
-                  for resources to see a medical provider if you do not have
-                  one.
+                  to find a medical provider in your area and schedule your next
+                  Pap smear.
                 </p>
               </div>
             )}
@@ -816,21 +1027,39 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>You can get your Pap smear results a few different ways. </p>
                 <ol>
                   <li>
-                    You can call the doctor's office to have the result be read
-                    to you.{" "}
+                    Call your doctor: You can call your doctor's office and have
+                    your results read to you or request a copy of your results
+                    via email, mail, or fax. You may need to sign a permission
+                    form.
                   </li>
                   <li>
-                    You can visit the doctor's office and request a copy. You
-                    can call and request a copy be emailed, mailed, or faxed to
-                    you. For both of these options you may need to sign a form.{" "}
+                    Visit your doctor: You can visit your doctor in-person to
+                    request a copy of your results via email, mail, or fax. You
+                    may need to sign a permission form.
                   </li>
                   <li>
-                    You may also be able to access your results online through a
-                    patient portal. Each health care system has a different
-                    patient portal. If your result is not in one, you can check
-                    another. These are sometimes called myChart or myResults.
+                    Log into your online health portal: You may also be able to
+                    access your results online through a patient portal. Each
+                    health care system has a different patient portal. These are
+                    sometimes called myChart or myResults. If you do not know
+                    how to access your patient portal, call your doctor's
+                    office. You can also search your email for an invitation to
+                    join the patient portal. If you have seen more than one
+                    doctor, you may have more than one patient portal, so you
+                    may need to check multiple patient portals to find your
+                    results.
                   </li>
                 </ol>
+                <p>
+                  If you are still unsure or you do not have a doctor, please
+                  see
+                  <Link to="/providers" className="menuhover">
+                    {" "}
+                    this page
+                  </Link>{" "}
+                  to find a medical provider in your area and schedule a Pap
+                  smear as soon as possible.
+                </p>
               </div>
             )}
           </ol>

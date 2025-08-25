@@ -35,8 +35,7 @@
 }
 
 .paragraph {
-  z-index: -1;
-  font-size: 1.1em;
+  z-index: -10;
   margin: 0;
   text-align: center;
   padding: 7px;
@@ -56,6 +55,7 @@
 
 .paragraph:nth-of-type(2) {
   animation-delay: 2s; /* Starts after the first paragraph */
+  z-index: -1;
 }
 
 .paragraph:nth-of-type(3) {
@@ -74,6 +74,7 @@
   100% {
     opacity: 1;
     visibility: visible;
+    z-index: -1;
   }
 }
 
@@ -90,7 +91,7 @@
   }
 
   .banner p {
-    font-size: 16px;
+    font-size: 18px;
     padding: 5px;
   }
 }
@@ -103,7 +104,7 @@
   }
 
   .banner p {
-    font-size: 14px;
+    font-size: 16px;
     padding: 5px;
   }
 }

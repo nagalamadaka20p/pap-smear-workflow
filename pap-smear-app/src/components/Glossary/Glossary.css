@@ -58,7 +58,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .glossary {
     width: 80%;
     margin-left: auto;
