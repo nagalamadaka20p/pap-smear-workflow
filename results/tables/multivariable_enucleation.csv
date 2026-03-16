@@ -1,0 +1,15 @@
+variable,level,OR,95% CI,P-value
+race_originHispanic, (All Races),1.56,(1.24 - 1.94),<0.001
+race_originNon,-Hispanic American Indian/Alaska Native,1.04,(0.38 - 2.42),0.930
+race_originNon,-Hispanic Asian or Pacific Islander,1.13,(0.64 - 1.88),0.664
+race_originNon,-Hispanic Black,1.82,(0.99 - 3.21),0.044
+race_originNon,-Hispanic Unknown Race,2.30,(1.33 - 3.85),0.002
+yost_catMiddle,,1.44,(1.24 - 1.66),<0.001
+yost_catLower,,1.70,(1.47 - 1.97),<0.001
+age_cat56,-68,0.90,(0.78 - 1.04),0.164
+age_cat69,+,1.10,(0.96 - 1.26),0.155
+sexFemale,,0.75,(0.67 - 0.84),<0.001
+ajcc_stageStage, II,6.49,(4.56 - 9.56),<0.001
+ajcc_stageStage, IV,13.95,(7.13 - 27.25),<0.001
+ajcc_stageUnknown,,4.81,(3.42 - 7.01),<0.001
+year_dx,,1.01,(1.00 - 1.02),0.166
