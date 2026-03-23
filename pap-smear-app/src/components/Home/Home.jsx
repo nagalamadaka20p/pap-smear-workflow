@@ -55,7 +55,7 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
         <a href="https://www.acog.org/womens-health/videos/cervical-cancer-screening">
           Here
         </a>{" "}
-        is a video with more info.{" "}
+        is more information and a video about cervical cancer.{" "}
       </p>
           </p>
         )}
