@@ -36,14 +36,15 @@ const Banner = ({ glossary, handleHover, handleMouseOut }) => {
         is more information and a video about cervical cancer screening.
       </p>
       <p className="paragraph">
-        Cervical cancer can cause symptoms ranging from minor bleeds to life
-        threatening situations. However, by screening early, we can catch and
-        treat cervical cancer <i>before</i> it becomes a serious problem.
+        Cervical cancer may have no symptoms or may have symptoms ranging from
+        minor bleeding to heavy bleeding, abnormal vaginal discharge and pelvic
+        pain. However, by screening early, we can catch and treat cervical
+        cancer <i>before</i> it becomes a serious problem.
       </p>
       <p className="paragraph">
         This website is intended to help you understand whether you need a Pap
-        smear. After answering a few questions, the website will provide a
-        tailored recommendation for you about whether you need a Pap smear.{" "}
+        smear or HPV testing. After answering a few questions, the website will provide a
+        personalized recommendation about whether you need screening.{" "}
       </p>
       <p className="paragraph">
         This is not a substitute for expert medical care. If you are unsure if
@@ -71,7 +72,7 @@ const Banner = ({ glossary, handleHover, handleMouseOut }) => {
         for more information about the Women's Cancer Screening Program in Rhode
         Island.
       </p>
-      <p className="paragraph">To begin, fill out the questions below.</p>
+      <p className="paragraph">To find out if you need cervical cancer screening, please fill out the questions below.</p>
       <Survey
         glossary={glossary}
         handleHover={handleHover}
