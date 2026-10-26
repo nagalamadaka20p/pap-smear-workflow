@@ -146,19 +146,9 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     rel="noopener noreferrer"
                     className="menuhover"
                   >
-                     list of providers
+                    list of providers
                   </a>{" "}
-                  in your area. If you do not have health insurance or cannot
-                  afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  in your area.
                 </p>
               </div>
             )}
@@ -166,98 +156,33 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {/* ════════════════════════════════════════
                 HIV+ FLOW — cervix question first
             ════════════════════════════════════════ */}
+
+            {/* HIV+ cervix = yes → 12-month pap question */}
             {troubleshooting.hivAnswer === "yes" && (
               <div className="question">
-                <p>
-                  To get cervical cancer, a person must have a cervix. The
-                  cervix is part of the female reproductive system. If you have
-                  a cervix, you need regular Pap smears and/or HPV tests to
-                  check for cervical cancer.
-                  <br />
-                  If you were born female and have not had surgery to remove
-                  your uterus (a hysterectomy), you probably still have a
-                  cervix. Even if you had a hysterectomy, you may still have a
-                  cervix and may still need Pap smears.
-                  <br />
-                  The best way to know for sure is to ask your surgeon or have a
-                  pelvic exam with a healthcare provider. Click{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    here
-                  </a>{" "}
-                  if you need a provider. If you do not have health insurance or
-                  cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
-                </p>
                 <li>
-                  Have you had a{" "}
-                  <u
-                    className="glossary-term"
-                    onMouseOver={handleHover}
-                    onMouseOut={handleMouseOut}
-                  >
-                    hysterectomy
-                  </u>{" "}
-                  (surgery to remove your uterus)?
+                  Was your most recent Pap smear within the last 12 months?
                 </li>
                 <select
-                  name="cervixAnswer"
+                  name="last12pap"
                   className="troubleshooting-dropdown"
-                  value={troubleshooting.cervixAnswer}
+                  value={troubleshooting.last12pap}
                   onChange={(e) =>
-                    handleOnTroubleshootingChange(
-                      "cervixAnswer",
-                      e.target.value,
-                    )
+                    handleOnTroubleshootingChange("last12pap", e.target.value)
                   }
                 >
                   <option value="">Select an Option</option>
                   <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                  <option value="unsure">I'm not sure</option>
+                  <option value="no">
+                    No, my most recent Pap smear was more than 12 months ago
+                  </option>
+                  <option value="never">I have never had a Pap smear</option>
+                  <option value="unsure">
+                    I do not know or I can't remember
+                  </option>
                 </select>
               </div>
             )}
-
-            {/* HIV+ cervix = yes → 12-month pap question */}
-            {troubleshooting.hivAnswer === "yes" &&
-              troubleshooting.cervixAnswer === "yes" && (
-                <div className="question">
-                  <li>
-                    Was your most recent Pap smear within the last 12 months?
-                  </li>
-                  <select
-                    name="last12pap"
-                    className="troubleshooting-dropdown"
-                    value={troubleshooting.last12pap}
-                    onChange={(e) =>
-                      handleOnTroubleshootingChange("last12pap", e.target.value)
-                    }
-                  >
-                    <option value="">Select an Option</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">
-                      No, my most recent Pap smear was more than 12 months ago
-                    </option>
-                    <option value="never">I have never had a Pap smear</option>
-                    <option value="unsure">
-                      I do not know or I can't remember
-                    </option>
-                  </select>
-                </div>
-              )}
 
             {/* HIV+ last12pap = no or never → overdue */}
             {troubleshooting.hivAnswer === "yes" &&
@@ -277,17 +202,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       this page
                     </a>{" "}
-                    to find a medical provider in your area. If you do not have
-                    health insurance or cannot afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    to find a medical provider in your area.
                   </p>
                 </div>
               )}
@@ -316,9 +231,14 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     <li>
                       <b>Log into your online health portal:</b> You may also be
                       able to access your records online through a patient
+                      portal. Each health care system has a different patient
                       portal. These are sometimes called myChart or myResults.
                       If you do not know how to access your patient portal, call
-                      your doctor's office.
+                      your doctor's office. You can also search your email for
+                      an invitation to join the patient portal. If you have seen
+                      more than one doctor, you may have more than one patient
+                      portal, so you may need to check multiple patient portals
+                      to find your results.
                     </li>
                   </ol>
                   <p>
@@ -333,17 +253,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       this page
                     </a>{" "}
                     to find a medical provider in your area and schedule
-                    screening as soon as possible. If you do not have health
-                    insurance or cannot afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    screening as soon as possible.
                   </p>
                 </div>
               )}
@@ -367,8 +277,12 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     }
                   >
                     <option value="">Select an Option</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="yes">
+                      Yes, I know the results of my most recent Pap smear
+                    </option>
+                    <option value="no">
+                      No, I do not know the results of my most recent Pap smear
+                    </option>
                   </select>
                 </div>
               )}
@@ -393,9 +307,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       permission form.
                     </li>
                     <li>
-                      <b>Log into your online health portal:</b> These are
-                      sometimes called myChart or myResults. If you do not know
-                      how to access your portal, call your doctor's office.
+                      <b>Log into your online health portal:</b> You may also be
+                      able to access your records online through a patient
+                      portal. Each health care system has a different patient
+                      portal. These are sometimes called myChart or myResults.
+                      If you do not know how to access your patient portal, call
+                      your doctor's office. You can also search your email for
+                      an invitation to join the patient portal. If you have seen
+                      more than one doctor, you may have more than one patient
+                      portal, so you may need to check multiple patient portals
+                      to find your results.
                     </li>
                   </ol>
                   <p>
@@ -493,13 +414,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     from the date of your last Pap smear. For example, if your
                     most recent Pap smear was in January 2025, your next Pap
                     smear would be in January 2026.
-                    <br />
-                    <br />
-                    Individuals who have HIV and have had 3 normal cervical
-                    cancer screenings in a row may be able to stretch out their
-                    screenings to once every three years. However, this decision
-                    should be made between you and your doctor. Please speak
-                    with your doctor about your individual screening schedule.
+                  
                     <br />
                     <br />
                     If you do not have a provider, please see{" "}
@@ -512,17 +427,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       this page
                     </a>{" "}
                     to find a medical provider in your area and schedule your
-                    next Pap smear. If you do not have health insurance or
-                    cannot afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    next Pap smear.
                   </p>
                 </div>
               )}
@@ -544,17 +449,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       this page
                     </a>{" "}
-                    to find a medical provider in your area. If you do not have
-                    health insurance or cannot afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    to find a medical provider in your area{" "}
                   </p>
                 </div>
               )}
@@ -562,65 +457,550 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {/* ════════════════════════════════════════
                 21-29 + HIV negative — cervix question
             ════════════════════════════════════════ */}
-            {ageGroup === "21-29" && troubleshooting.hivAnswer === "no" && (
+            {(ageGroup === "21-29" || ageGroup === "over65") &&
+              troubleshooting.hivAnswer === "no" && (
+                <div className="question">
+                  <p>
+                    To develop cervical cancer, a person must have a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      cervix
+                    </u>
+                    . The cervix is a reproductive organ located at the end of
+                    the vagina, connected to the lower part of the uterus. If
+                    you have had a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      hysterectomy
+                    </u>{" "}
+                    (surgery to remove your uterus), there is a good chance the
+                    cervix was also removed at the same time because these
+                    organs are connected. However, sometimes a “supracervical”
+                    hysterectomy is performed, which means you keep your cervix.
+                    <br />
+                    <br />
+                    If you no longer have a cervix, you may not need pap smears
+                    to continue to screen for cervical cancer.
+                    <br />
+                    <br />
+                    If you have not had a hysterectomy, you still have a cervix
+                    and should continue to screen for cervical cancer.
+                  </p>
+                  <li>
+                    Have you had a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      hysterectomy
+                    </u>{" "}
+                    (surgery to remove your uterus)?
+                  </li>
+                  <select
+                    name="cervixAnswer"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.cervixAnswer}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange(
+                        "cervixAnswer",
+                        e.target.value,
+                      )
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="no">
+                      No, I have not had a hysterectomy
+                    </option>
+                    <option value="yesNoCervix">
+                      Yes, I've had a hysterectomy with removal of the
+                      cervix{" "}
+                    </option>
+                    <option value="yesYesCervix">
+                      Yes, I've had a hysterectomy but I still have a cervix
+                    </option>
+                    <option value="unsure">
+                      Yes, I've had a hysterectomy but I'm not sure if the
+                      cervix was removed.
+                    </option>
+                  </select>
+                </div>
+              )}
+
+            {ageGroup === "over65" &&
+              (troubleshooting.cervixAnswer === "no" ||
+                troubleshooting.cervixAnswer === "yesYesCervix") && (
+                <div className="question">
+                  <p> When was your last Pap smear?</p>
+                  <select
+                    name="whenPap"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.whenPap}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange("whenPap", e.target.value)
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="under65">
+                      I had my last Pap smear when I was 65 years old or younger
+                    </option>
+                    <option value="over65">
+                      I had my last Pap smear when I was over 65 years old
+                    </option>
+                    <option value="unsure">
+                      I don't know if I have ever had a Pap smear
+                    </option>
+                  </select>
+                </div>
+              )}
+
+            {ageGroup === "over65" &&
+              troubleshooting.cervixAnswer === "unsure" && (
+                <div className="question">
+                  <p>
+                    The best way to confirm that you have a cervix is to check
+                    with your surgeon or undergo a pelvic exam with a healthcare
+                    provider. This will determine whether you need Pap smears in
+                    the future. Click here if you need a provider.
+                  </p>
+                </div>
+              )}
+
+            {ageGroup === "over65" &&
+              (troubleshooting.whenPap === "under65" ||
+                troubleshooting.whenPap === "over65") && (
+                <div className="question">
+                  <p>
+                    The next question will ask you about your Pap smear results.
+                    Normal Pap smear results will have the following acronym or
+                    words on them:
+                  </p>
+                  <ul>
+                    <li>NIL (negative for intraepithelial lesion)</li>
+                    <li>
+                      NILM (negative for intraepithelial lesion or malignancy)
+                    </li>
+                    <li>If you had HPV testing, a normal test is negative</li>
+                  </ul>
+                  <p>
+                    Abnormal Pap smear results will have the following acronyms
+                    or words on them:
+                  </p>
+                  <ul>
+                    <li>
+                      ASCUS (atypical squamous cells of undetermined
+                      significance)
+                    </li>
+                    <li>
+                      LSIL/LGSIL (low grade squamous intraepithelial lesion)
+                    </li>
+                    <li>
+                      HSIL/HGSIL (high grade squamous intraepithelial lesion)
+                    </li>
+                    <li>ASC-H (atypical squamous cells)</li>
+                    <li>AGC (atypical glandular cells)</li>
+                    <li>
+                      If you had HPV testing, a positive HPV test is abnormal
+                    </li>
+                  </ul>
+                  <li>Have you ever had abnormal Pap smear results?</li>
+                  <select
+                    name="normalDocAnswer"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.normalDocAnswer}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange(
+                        "normalDocAnswer",
+                        e.target.value,
+                      )
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="abnormal">
+                      Yes, my most recent Pap smear was abnormal
+                    </option>
+                    <option value="pastAbnormal">
+                      Yes, I have had abnormal Pap smear results in the past
+                    </option>
+                    <option value="neverAbnormal">
+                      No, I have never had abnormal Pap smear results
+                    </option>
+                  </select>
+                </div>
+              )}
+
+            {ageGroup === "over65" &&
+              troubleshooting.normalDocAnswer === "abnormal" && (
+                <div className="question">
+                  <p>
+                    You are likely due now or overdue for cervical cancer
+                    screening. Please schedule an appointment with your
+                    healthcare provider for screening. If you do not have a provider, please
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area.
+                  </p>
+                </div>
+              )}
+
+            {ageGroup === "over65" &&
+              troubleshooting.normalDocAnswer === "pastAbnormal" && (
+                <div className="question">
+                  <p>
+                    If you have ever had an abnormal Pap smear, you may need to
+                    continue screening for cervical cancer past age 65. Please
+                    schedule an appointment with your healthcare provider to
+                    discuss if you need to continue screening. If you do not have a provider, please
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area.
+                  
+                  </p>
+                </div>
+              )}
+
+            {ageGroup === "over65" &&
+              troubleshooting.normalDocAnswer === "neverAbnormal" && (
+                <div className="question">
+                  <p>
+                    It is possible you don’t need any more Pap smears if you’ve
+                    always had normal Pap smears and you had a recent Pap smear
+                    prior to turning age 65. Please talk to your doctor to
+                    confirm you do not need any further Pap smears. It is
+                    recommended to continue having regular pelvic exams every 2
+                    years, as there is still a risk for other conditions such as
+                    cancer of the ovary or vulva.
+                  </p>
+                </div>
+              )}
+
+            {ageGroup === "21-29" &&
+              (troubleshooting.cervixAnswer === "yesYesCervix" ||
+                troubleshooting.cervixAnswer === "no") && (
+                <div className="question">
+                  <p>
+                    A Pap smear is a sampling of cells from the surface of the
+                    cervix to screen for early cervical cancer. This exam
+                    involves using a speculum so your doctor can see your
+                    cervix, and special types of brushes to collect the cells
+                    from your cervix. When was your last Pap smear?
+                  </p>
+                  <li>When was your last Pap smear?</li>
+                  <select
+                    name="whenPap"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.whenPap}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange("whenPap", e.target.value)
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="lessThan3Years">
+                      Less than 3 years ago
+                    </option>
+                    <option value="moreThan3Years">
+                      More than 3 years ago
+                    </option>
+                    <option value="never">I have never had a Pap smear</option>
+                    <option value="unsure">
+                      I don't know if I have ever had a Pap smear
+                    </option>
+                  </select>
+                </div>
+              )}
+
+            {ageGroup === "21-29" &&
+              troubleshooting.whenPap === "lessThan3Years" && (
+                <div className="question">
+                  <li>
+                    Do you know the results of your most recent Pap smear?
+                  </li>
+                  <select
+                    name="lastPapResult"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.lastPapResult}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange(
+                        "lastPapResult",
+                        e.target.value,
+                      )
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="know">
+                      Yes, I know the results of my most recent Pap smear
+                    </option>
+                    <option value="unknown">
+                      No, I do not know the results of my most recent Pap smear
+                    </option>
+                  </select>
+                </div>
+              )}
+
+            {ageGroup === "21-29" &&
+              (troubleshooting.whenPap === "moreThan3Years" ||
+                troubleshooting.whenPap === "never") && (
+                <p>
+                  You are likely due now or overdue for cervical cancer
+                  screening. Please schedule an appointment with your healthcare
+                  provider for screening. If you do not have a provider, please
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area.
+                </p>
+              )}
+
+            {((ageGroup === "21-29" && troubleshooting.whenPap === "unsure") ||
+              (ageGroup === "over65" &&
+                troubleshooting.whenPap === "unsure")) && (
               <div className="question">
                 <p>
-                  To develop cervical cancer, a person must have a{" "}
-                  <u
-                    className="glossary-term"
-                    onMouseOver={handleHover}
-                    onMouseOut={handleMouseOut}
-                  >
-                    cervix
-                  </u>
-                  . The cervix is a reproductive organ located at the end of the vagina, connected to the lower part of the uterus. 
-                  If you have had a <u
-                    className="glossary-term"
-                    onMouseOver={handleHover}
-                    onMouseOut={handleMouseOut}
-                  >
-                    hysterectomy
-                  </u> (surgery to remove your uterus), there is a good chance the cervix was also removed at the same time because these organs are connected. However, sometimes a “supracervical” hysterectomy is performed, which means you keep your cervix. 
-                  <br />
-                  <br />
-
-                 If you no longer have a cervix, you may not need pap smears to continue to screen for cervical cancer. 
-                  <br />
-                  <br />
-                  {'\n'}
-                  If you have not had a hysterectomy, you still have a cervix and should continue to screen for cervical cancer. 
-                  
-                  
+                  There are a few ways to find out if you have ever had a Pap
+                  smear:
                 </p>
-                <li>
-                  Have you had a{" "}
-                  <u
-                    className="glossary-term"
-                    onMouseOver={handleHover}
-                    onMouseOut={handleMouseOut}
-                  >
-                    hysterectomy
-                  </u>{" "}
-                  (surgery to remove your uterus)?
-                </li>
-                <select
-                  name="cervixAnswer"
-                  className="troubleshooting-dropdown"
-                  value={troubleshooting.cervixAnswer}
-                  onChange={(e) =>
-                    handleOnTroubleshootingChange(
-                      "cervixAnswer",
-                      e.target.value,
-                    )
-                  }
-                >
-                  <option value="">Select an Option</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                  <option value="unsure">I'm not sure</option>
-                </select>
+                <ul>
+                  <li>
+                    Call your doctor: You can call your doctor's office and ask
+                    if you have ever had screening. If so, you can have the
+                    result read to you or request a copy of your results via
+                    email, mail, or fax. You may need to sign a permission form.
+                  </li>
+                  <li>
+                    Visit your doctor: You can visit your doctor in-person to
+                    request a copy of your results via email, mail, or fax. You
+                    may need to sign a permission form.
+                  </li>
+                  <li>
+                    <b>Log into your online health portal:</b> You may also be
+                    able to access your records online through a patient portal.
+                    Each health care system has a different patient portal.
+                    These are sometimes called myChart or myResults. If you do
+                    not know how to access your patient portal, call your
+                    doctor's office. You can also search your email for an
+                    invitation to join the patient portal. If you have seen more
+                    than one doctor, you may have more than one patient portal,
+                    so you may need to check multiple patient portals to find
+                    your results.
+                  </li>
+                  <li>
+                    If you are still unsure or you do not have a doctor, please
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      see this page to find a medical provider
+                    </a>{" "}
+                    in your area.
+                  </li>
+                </ul>
               </div>
             )}
+
+            {ageGroup === "21-29" &&
+              troubleshooting.lastPapResult === "unknown" && (
+                <div className="question">
+                  <p>
+                    You can get your Pap smear results a few different ways:
+                  </p>
+                  <ol>
+                    <li>
+                      <b>Call your doctor:</b> We highly recommend this option
+                      because results can easily be misinterpreted. You can call
+                      your doctor's office and have your history read to you or
+                      request a copy via email, mail, or fax. You may need to
+                      sign a permission form.
+                    </li>
+                    <li>
+                      <b>Visit your doctor:</b> You can visit your doctor
+                      in-person to request a copy of your results. You may need
+                      to sign a permission form.
+                    </li>
+                    <li>
+                      <b>Log into your online health portal:</b> You may also be
+                      able to access your records online through a patient
+                      portal. Each health care system has a different patient
+                      portal. These are sometimes called myChart or myResults.
+                      If you do not know how to access your patient portal, call
+                      your doctor's office. You can also search your email for
+                      an invitation to join the patient portal. If you have seen
+                      more than one doctor, you may have more than one patient
+                      portal, so you may need to check multiple patient portals
+                      to find your results.
+                    </li>
+                  </ol>
+                  <p>
+                    If you are still unsure or you do not have a doctor, please
+                    see{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule a screening as soon as possible.
+                  </p>
+                </div>
+              )}
+
+            {ageGroup === "21-29" &&
+              troubleshooting.lastPapResult === "know" && (
+                <div className="question">
+                  <p>
+                    The next question will ask you about your Pap smear results.
+                    Normal Pap smear results will have the following acronym or
+                    words on them:
+                  </p>
+                  <ul>
+                    <li>NIL (Negative for intraepithelial lesion)</li>
+                    <li>
+                      NILM (Negative for intraepithelial lesion or malignancy)
+                    </li>
+                    <li>
+                      If you had HPV testing, it will be <b>negative</b>
+                    </li>
+                  </ul>
+                  <p>
+                    Abnormal Pap smear results will have the following acronyms
+                    or words on them:
+                  </p>
+                  <ul>
+                    <li>
+                      ASCUS (atypical squamous cells of undetermined
+                      significance)
+                    </li>
+                    <li>
+                      LSIL/LGSIL (low grade squamous intraepithelial lesion)
+                    </li>
+                    <li>
+                      HSIL/HGSIL (high grade squamous intraepithelial lesion)
+                    </li>
+                    <li>ASC-H (atypical squamous cells)</li>
+                    <li>AGC (atypical glandular cells)</li>
+                    <li>
+                      If you had HPV testing, it may be <b>positive</b> or{" "}
+                      <b>negative</b>
+                    </li>
+                  </ul>
+                  <li>Were your Pap smear results normal?</li>
+                  <select
+                    name="normalDocAnswer"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.normalDocAnswer}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange(
+                        "normalDocAnswer",
+                        e.target.value,
+                      )
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="yes">
+                      Yes, my Pap smear results were normal
+                    </option>
+                    <option value="no">
+                      No, my Pap smear results were abnormal
+                    </option>
+                    <option value="unsure">I'm not sure</option>
+                  </select>
+                </div>
+              )}
+
+            {ageGroup === "21-29" &&
+              troubleshooting.normalDocAnswer === "yes" && (
+                <div className="question">
+                  <p>
+                    You are likely due for cervical cancer screening 3 years
+                    from the date of your last Pap smear. For example, if your
+                    most recent Pap smear was in January 2025, your next Pap
+                    smear would be in January 2028.
+                    <br />
+                    <br />
+                    If you do not have a provider, please see{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
+                  </p>
+                </div>
+              )}
+
+            {ageGroup === "21-29" &&
+              troubleshooting.normalDocAnswer === "no" && (
+                <div className="question">
+                  <p>
+                    You are likely due now or overdue for cervical cancer
+                    screening. Please schedule an appointment with your
+                    healthcare provider for screening. If you do not have a
+                    provider, please see{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
+                  </p>
+                </div>
+              )}
+
+            {ageGroup === "21-29" &&
+              troubleshooting.normalDocAnswer === "unsure" && (
+                <div className="question">
+                  <p>
+                    The best way to find out if your Pap smear results were
+                    normal is to call your doctor's office and ask. They may ask
+                    you to come in to visit your doctor to discuss your testing
+                    further.
+                    <br />
+                    <br />
+                    If you do not have a provider, please see{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
+                  </p>
+                </div>
+              )}
 
             {/* ════════════════════════════════════════
                 30-65 + HIV negative — cervix question
@@ -636,10 +1016,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     cervix
                   </u>
-                  . The cervix is part of the female reproductive system. If you
-                  have a cervix, you need regular Pap smears and/or HPV tests to
-                  check for cervical cancer. If you were born female and have
-                  not had surgery to remove your uterus (a{" "}
+                  . The cervix is a reproductive organ located at the end of the
+                  vagina, connected to the lower part of the uterus. If you have
+                  had a hysterectomy (surgery to remove your uterus), there is a
+                  good chance the cervix was also removed at the same time
+                  because these organs are connected. However, sometimes a
+                  “supracervical” hysterectomy is performed, which means you
+                  keep your cervix. If you no longer have a cervix, you may not
+                  need pap smears to continue to screen for cervical cancer. If
+                  you have not had a (a{" "}
                   <u
                     className="glossary-term"
                     onMouseOver={handleHover}
@@ -647,38 +1032,8 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     hysterectomy
                   </u>
-                  ), you probably still have a cervix. Even if you had a
-                  hysterectomy, you may still have a cervix and may still need
-                  Pap smears. , you may still have a cervix and need Pap smears.
-                  The most accurate way to confirm is to check with your surgeon
-                  or undergo a{" "}
-                  <u
-                    className="glossary-term"
-                    onMouseOver={handleHover}
-                    onMouseOut={handleMouseOut}
-                  >
-                    pelvic exam
-                  </u>{" "}
-                  with a provider. Click{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    here
-                  </a>{" "}
-                  if you need a provider. If you do not have health insurance or
-                  cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  ),you still have a cervix and should continue to screen for
+                  cervical cancer.
                 </p>
                 <li>
                   Have you had a{" "}
@@ -703,9 +1058,17 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   }
                 >
                   <option value="">Select an Option</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                  <option value="unsure">I'm not sure</option>
+                  <option value="no">No, I have not had a hysterectomy</option>
+                  <option value="yesNoCervix">
+                    Yes, I've had a hysterectomy with removal of the cervix{" "}
+                  </option>
+                  <option value="yesYesCervix">
+                    Yes, I've had a hysterectomy but I still have a cervix{" "}
+                  </option>
+                  <option value="unsure">
+                    Yes, I've had a hysterectomy but I'm not sure if the cervix
+                    was removed.
+                  </option>
                 </select>
               </div>
             )}
@@ -713,7 +1076,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {/* ════════════════════════════════════════
                 over65 + HIV negative — cervix question
             ════════════════════════════════════════ */}
-            {ageGroup === "over65" && troubleshooting.hivAnswer === "no" && (
+            {/* {ageGroup === "over65" && troubleshooting.hivAnswer === "no" && (
               <div className="question">
                 <p>
                   To get cervical cancer, a person must have a cervix. The
@@ -772,11 +1135,11 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 >
                   <option value="">Select an Option</option>
                   <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="no">No, I have not had a hysterectomy</option>
                   <option value="unsure">I'm not sure</option>
                 </select>
               </div>
-            )}
+            )} */}
 
             {/* ════════════════════════════════════════
                 NO CERVIX FLOW (all ages, HIV neg/pos)
@@ -784,8 +1147,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 HIV+ "no cervix" is handled above via
                 the same cervixAnswer === "no" check
             ════════════════════════════════════════ */}
-            {(troubleshooting.cervixAnswer === "no" ||
-              troubleshooting.cervixAnswer === "unsure") &&
+            {troubleshooting.cervixAnswer === "yesNoCervix" &&
               troubleshooting.hivAnswer !== "yes" && (
                 <div className="question">
                   <li>
@@ -816,8 +1178,13 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     }
                   >
                     <option value="">Select an Option</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="yes">
+                      Yes, I have a history of precancer of the cervix
+                      (dysplasia or CIN)
+                    </option>
+                    <option value="no">
+                      No, I do not have a history of precancer of the cervix
+                    </option>
                     <option value="unsure">I don't know</option>
                   </select>
                 </div>
@@ -827,28 +1194,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {troubleshooting.dysplasiaAnswer === "yes" && (
               <div className="question">
                 <p>
-                  If you have a history of cervical cancer or cervical changes,
-                  you should continue to have cervical cancer screening every
-                  year for up to 20 years after treatment. Please see{" "}
+                  You should continue to have Pap smears regularly for up to 25
+                  years after treatment of the precancer. Please schedule an
+                  appointment with your healthcare provider to inquire about
+                  your next screening. If you do not have a provider, please
                   <a
                     href="/providers"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="menuhover"
                   >
-                    this page
+                    see this page to find a medical provider
                   </a>{" "}
-                  to find a medical provider. If you do not have health
-                  insurance or cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  in your area.
                 </p>
               </div>
             )}
@@ -857,47 +1215,22 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {troubleshooting.dysplasiaAnswer === "no" && (
               <div className="question">
                 <p>
-                  If you have had a hysterectomy in which your cervix was
-                  removed and you do not have a history of cervical cancer or
-                  cervical changes, you may be able to discontinue cervical
-                  cancer screening.
-                  <br />
-                  <br />
-                  However, please be sure to confirm with your doctor and see an
-                  OB/gyn regularly for routine visits. Even if you are not due
-                  for cervical cancer screening, you should still see your
-                  ob-gyn regularly for vaccinations, health screenings, and the
-                  latest information about your reproductive health. It is
-                  recommended to continue having regular{" "}
-                  <u
-                    className="glossary-term"
-                    onMouseOver={handleHover}
-                    onMouseOut={handleMouseOut}
-                  >
-                    pelvic exam
-                  </u>
-                  s at least every 2 years because there is still a risk for
-                  other conditions such as cancer of the ovaries. If you do not
-                  have a provider, please see{" "}
+                  It is possible you don’t need any more Pap smears if you’ve
+                  always had normal Pap smears and no longer have a cervix.
+                  Please talk to your doctor to confirm you do not need ongoing
+                  screening. It is recommended to continue having regular pelvic
+                  exams every 2 years, as there is still a risk for other
+                  conditions such as cancer of the ovary or vulva. If you do not
+                  have a provider, please see
                   <a
                     href="/providers"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="menuhover"
                   >
-                    this page
+                    this page to find a medical provider.
                   </a>{" "}
-                  to find a medical provider. If you do not have health
-                  insurance or cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  in your area.
                 </p>
               </div>
             )}
@@ -920,10 +1253,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     sign a permission form.
                   </li>
                   <li>
-                    <b>Log into your online health portal:</b> These are
-                    sometimes called myChart or myResults. If you do not know
-                    how to access your patient portal, call your doctor's
-                    office.
+                    <b>Log into your online health portal:</b> You may also be
+                    able to access your records online through a patient portal.
+                    Each health care system has a different patient portal.
+                    These are sometimes called myChart or myResults. If you do
+                    not know how to access your patient portal, call your
+                    doctor's office. You can also search your email for an
+                    invitation to join the patient portal. If you have seen more
+                    than one doctor, you may have more than one patient portal,
+                    so you may need to check multiple patient portals to find
+                    your results.
                   </li>
                 </ol>
                 <p>
@@ -937,18 +1276,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     this page
                   </a>{" "}
-                  to find a medical provider and schedule a screening. If you do
-                  not have health insurance or cannot afford to visit the
-                  doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  to find a medical provider and schedule a screening.
                 </p>
               </div>
             )}
@@ -996,28 +1324,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     Please speak to your doctor about your specific screening
                     recommendations. Your screening schedule will depend on how
                     abnormal your cells were (whether they were "high-grade")
-                    and how long it has been since you had abnormal results. If
-                    you do not have a doctor, please click{" "}
-                    <a
-                      href="/providers"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="menuhover"
-                    >
-                      here
-                    </a>{" "}
-                    for a list of providers who can provide cervical cancer
-                    screening. If you do not have health insurance or cannot
-                    afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    and how long it has been since you had abnormal results. If you do not have a provider, please
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area.
                   </p>
                 </div>
               )}
@@ -1043,9 +1359,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       permission form.
                     </li>
                     <li>
-                      <b>Log into your online health portal:</b> These are
-                      sometimes called myChart or myResults. If you do not know
-                      how to access your portal, call your doctor's office.
+                      <b>Log into your online health portal:</b> You may also be
+                      able to access your records online through a patient
+                      portal. Each health care system has a different patient
+                      portal. These are sometimes called myChart or myResults.
+                      If you do not know how to access your patient portal, call
+                      your doctor's office. You can also search your email for
+                      an invitation to join the patient portal. If you have seen
+                      more than one doctor, you may have more than one patient
+                      portal, so you may need to check multiple patient portals
+                      to find your results.
                     </li>
                   </ol>
                   <p>
@@ -1059,17 +1382,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       here
                     </a>{" "}
-                    for a list of providers. If you do not have health insurance
-                    or cannot afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    for a list of providers. 
                   </p>
                 </div>
               )}
@@ -1079,15 +1392,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.hivAnswer === "no" &&
               troubleshooting.everAbnormalPap === "no" && (
                 <div className="question">
-                  <li>
+                  <p>
                     A Pap smear is a test that checks for early signs of
                     cervical cancer. During the test, your doctor uses a tool
                     called a speculum to gently open the vagina so they can see
                     the cervix. Then, they use a small soft brush to collect
                     cells from the cervix for testing.
                     <br />
-                    When was your most recent cervical cancer screening?
-                  </li>
+                  </p>
+                  <li>When was your most recent cervical cancer screening?</li>
                   <select
                     name="papAnswer"
                     className="troubleshooting-dropdown"
@@ -1151,26 +1464,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     the latest information about your reproductive health.
                     <br />
                     <br />
-                    If you do not have a provider, please see{" "}
-                    <a
-                      href="/providers"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="menuhover"
-                    >
-                      this page
-                    </a>{" "}
-                    to find a medical provider in your area. If you do not have
-                    health insurance or cannot afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    If you do not have a provider, please
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area.
                   </p>
                 </div>
               )}
@@ -1182,27 +1485,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   <p>
                     You are likely due now or overdue for cervical cancer
                     screening. Please schedule an appointment with your
-                    healthcare provider for screening. If you do not have a
-                    provider, please see{" "}
-                    <a
-                      href="/providers"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="menuhover"
-                    >
-                      this page
-                    </a>{" "}
-                    to find a medical provider in your area. If you do not have
-                    health insurance or cannot afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    healthcare provider for screening. If you do not have a provider, please
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area.
                   </p>
                 </div>
               )}
@@ -1228,24 +1520,29 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       permission form.
                     </li>
                     <li>
-                      <b>Log into your online health portal:</b> These are
-                      sometimes called myChart or myResults. If you do not know
-                      how to access your portal, call your doctor's office.
+                      <b>Log into your online health portal:</b> You may also be
+                      able to access your records online through a patient
+                      portal. Each health care system has a different patient
+                      portal. These are sometimes called myChart or myResults.
+                      If you do not know how to access your patient portal, call
+                      your doctor's office. You can also search your email for
+                      an invitation to join the patient portal. If you have seen
+                      more than one doctor, you may have more than one patient
+                      portal, so you may need to check multiple patient portals
+                      to find your results.
                     </li>
                   </ol>
                   <p>
-                    If you are still unsure and you do not have a doctor, please
-                    click{" "}
-                    <a
-                      href="/providers"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="menuhover"
-                    >
-                      here
-                    </a>{" "}
-                    for a list of providers to schedule a cervical cancer
-                    screening. If you do not have health insurance or cannot
+                    If you do not have a provider, please
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area. If you do not have health insurance or cannot
                     afford to visit the doctor, click{" "}
                     <a
                       href="https://health.ri.gov/programs/womenscancerscreening/"
@@ -1267,15 +1564,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               ageGroup === "21-29" &&
               troubleshooting.hivAnswer === "no" && (
                 <div className="question">
-                  <li>
+                  <p>
                     A Pap smear is a test that checks for early signs of
                     cervical cancer. During the test, your doctor uses a tool
                     called a speculum to gently open the vagina so they can see
                     the cervix. Then, they use a small soft brush to collect
                     cells from the cervix for testing.
                     <br />
-                    When was your last Pap smear?
-                  </li>
+                  </p>
+                  <li>When was your last Pap smear?</li>
                   <select
                     name="papAnswer"
                     className="troubleshooting-dropdown"
@@ -1298,19 +1595,20 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {/* ════════════════════════════════════════
                 30-65 + HIV neg + has cervix — pap timing
             ════════════════════════════════════════ */}
-            {troubleshooting.cervixAnswer === "yes" &&
+            {(troubleshooting.cervixAnswer === "no" ||
+              troubleshooting.cervixAnswer === "yesYesCervix") &&
               ageGroup === "30-65" &&
               troubleshooting.hivAnswer === "no" && (
                 <div className="question">
-                  <li>
-                    A Pap smear is a test that checks for early signs of
-                    cervical cancer. During the test, your doctor uses a tool
-                    called a speculum to gently open the vagina so they can see
-                    the cervix. Then, they use a small soft brush to collect
-                    cells from the cervix for testing.
+                  <p>
+                    A Pap smear is a sampling of cells from the surface of the
+                    cervix to screen for early cervical cancer. This exam
+                    involves using a speculum so your doctor can see your
+                    cervix, and special types of brushes to collect the cells
+                    from your cervix.
                     <br />
-                    When was your last Pap smear?
-                  </li>
+                  </p>
+                  <li>When was your last Pap smear?</li>
                   <select
                     name="papAnswer"
                     className="troubleshooting-dropdown"
@@ -1354,23 +1652,14 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       this page to find a medical provider
                     </a>{" "}
-                    in your area. If you do not have health insurance or cannot
-                    afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    in your area.
                   </p>
                 </div>
               )}
 
             {/* Can't remember if ever had pap */}
-            {troubleshooting.papAnswer === "cantremember" && (
+            {(troubleshooting.papAnswer === "cantremember" ||
+              troubleshooting.papAnswer === "cantrememberpap") && (
               <div className="question">
                 <p>
                   There are a few ways to find out if you have ever had a Pap
@@ -1414,244 +1703,101 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     this page
                   </a>{" "}
                   to find a medical provider in your area and schedule a Pap
-                  smear as soon as possible. If you do not have health insurance
-                  or cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  smear as soon as possible. 
                 </p>
-              </div>
-            )}
-
-            {/* Can't remember when last pap was */}
-            {troubleshooting.papAnswer === "cantrememberpap" && (
-              <div className="question">
-                <p>
-                  There are a few ways to find out when you last had a Pap
-                  smear:
-                </p>
-                <ol>
-                  <li>
-                    <b>Call your doctor:</b> You can call your doctor's office
-                    and ask. You can have your results read to you or request a
-                    copy via email, mail, or fax. You may need to sign a
-                    permission form.
-                  </li>
-                  <li>
-                    <b>Visit your doctor:</b> You can visit your doctor
-                    in-person to request a copy of your results via email, mail,
-                    or fax. You may need to sign a permission form.
-                  </li>
-                  <li>
-                    <b>Log into your online health portal:</b> You may also be
-                    able to access your records online through a patient portal.
-                    Each health care system has a different patient portal.
-                    These are sometimes called myChart or myResults. If you do
-                    not know how to access your patient portal, call your
-                    doctor's office.
-                  </li>
-                </ol>
-                <p>
-                  If you are still unsure or you do not have a doctor, please
-                  see{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    this page
-                  </a>{" "}
-                  to find a medical provider in your area and schedule a Pap
-                  smear as soon as possible. If you do not have health insurance
-                  or cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
-                </p>
-              </div>
-            )}
-
-            {/* ════════════════════════════════════════
-                between35 (30-65 only) — do you have results?
-            ════════════════════════════════════════ */}
-            {troubleshooting.papAnswer === "between35" && (
-              <div className="question">
-                <li>Do you know the results of your most recent Pap smear?</li>
-                <select
-                  name="documentationAnswer"
-                  className="troubleshooting-dropdown"
-                  value={troubleshooting.documentationAnswer}
-                  onChange={(e) =>
-                    handleOnTroubleshootingChange(
-                      "documentationAnswer",
-                      e.target.value,
-                    )
-                  }
-                >
-                  <option value="">Select an Option</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
               </div>
             )}
 
             {/* under3 — do you know results? */}
-            {troubleshooting.papAnswer === "under3" && (
+            {ageGroup === "30-65" &&
+              (troubleshooting.papAnswer === "under3" ||
+                troubleshooting.papAnswer === "between35") && (
+                <div className="question">
+                  <li>
+                    Do you know the results of your most recent Pap smear?
+                  </li>
+                  <select
+                    name="documentationAnswer"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.documentationAnswer}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange(
+                        "documentationAnswer",
+                        e.target.value,
+                      )
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="yes">
+                      Yes, I know the results of my most recent Pap smear
+                    </option>
+                    <option value="no">
+                      No, I do not know the results of my most recent Pap smear
+                    </option>
+                  </select>
+                </div>
+              )}
+
+            {/* under3 + knows results → were they normal? */}
+            {troubleshooting.documentationAnswer === "yes" && (
               <div className="question">
-                <li>Do you know the results of your most recent Pap smear?</li>
+                <p>
+                  The next question will ask you about your Pap smear results.
+                  Normal Pap smear results will have the following acronym or
+                  words on them:
+                </p>
+                <ul>
+                  <li>NIL (Negative for intraepithelial lesion)</li>
+                  <li>
+                    NILM (Negative for intraepithelial lesion or malignancy)
+                  </li>
+                  <li>
+                    If you had HPV testing, it will be <b>negative</b>
+                  </li>
+                </ul>
+                <p>
+                  Abnormal Pap smear results will have the following acronyms or
+                  words on them:
+                </p>
+                <ul>
+                  <li>
+                    ASCUS (atypical squamous cells of undetermined significance)
+                  </li>
+                  <li>
+                    LSIL/LGSIL (low grade squamous intraepithelial lesion)
+                  </li>
+                  <li>
+                    HSIL/HGSIL (high grade squamous intraepithelial lesion)
+                  </li>
+                  <li>ASC-H (atypical squamous cells)</li>
+                  <li>AGC (atypical glandular cells)</li>
+                  <li>
+                    If you had HPV testing, it may be <b>positive</b> or{" "}
+                    <b>negative</b>
+                  </li>
+                </ul>
+                <li>Were your Pap smear results normal?</li>
                 <select
-                  name="documentationAnswer"
+                  name="normalDocAnswer"
                   className="troubleshooting-dropdown"
-                  value={troubleshooting.documentationAnswer}
+                  value={troubleshooting.normalDocAnswer}
                   onChange={(e) =>
                     handleOnTroubleshootingChange(
-                      "documentationAnswer",
+                      "normalDocAnswer",
                       e.target.value,
                     )
                   }
                 >
                   <option value="">Select an Option</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="yes">
+                    Yes, my Pap smear results were normal
+                  </option>
+                  <option value="no">
+                    No, my Pap smear results were abnormal
+                  </option>
                 </select>
               </div>
             )}
-
-            {/* under3 + knows results → were they normal? */}
-            {troubleshooting.documentationAnswer === "yes" &&
-              troubleshooting.papAnswer === "under3" && (
-                <div className="question">
-                  <p>
-                    The next question will ask you about your Pap smear results.
-                    Normal Pap smear results will have the following acronym or
-                    words on them:
-                  </p>
-                  <ul>
-                    <li>NIL (Negative for intraepithelial lesion)</li>
-                    <li>
-                      NILM (Negative for intraepithelial lesion or malignancy)
-                    </li>
-                    <li>
-                      If you had HPV testing, it will be <b>negative</b>
-                    </li>
-                  </ul>
-                  <p>
-                    Abnormal Pap smear results will have the following acronyms
-                    or words on them:
-                  </p>
-                  <ul>
-                    <li>
-                      ASCUS (atypical squamous cells of undetermined
-                      significance)
-                    </li>
-                    <li>
-                      LSIL/LGSIL (low grade squamous intraepithelial lesion)
-                    </li>
-                    <li>
-                      HSIL/HGSIL (high grade squamous intraepithelial lesion)
-                    </li>
-                    <li>ASC-H (atypical squamous cells)</li>
-                    <li>AGC (atypical glandular cells)</li>
-                    <li>
-                      If you had HPV testing, it may be <b>positive</b> or{" "}
-                      <b>negative</b>
-                    </li>
-                  </ul>
-                  <li>Were your Pap smear results normal?</li>
-                  <select
-                    name="normalDocAnswer"
-                    className="troubleshooting-dropdown"
-                    value={troubleshooting.normalDocAnswer}
-                    onChange={(e) =>
-                      handleOnTroubleshootingChange(
-                        "normalDocAnswer",
-                        e.target.value,
-                      )
-                    }
-                  >
-                    <option value="">Select an Option</option>
-                    <option value="yes">
-                      Yes, my Pap smear results were normal
-                    </option>
-                    <option value="no">
-                      No, my Pap smear results were abnormal
-                    </option>
-                  </select>
-                </div>
-              )}
-
-            {/* between35 + knows results → were they normal? */}
-            {troubleshooting.documentationAnswer === "yes" &&
-              ageGroup === "30-65" &&
-              troubleshooting.papAnswer === "between35" && (
-                <div className="question">
-                  <p>
-                    Normal Pap smear results will have the following acronym or
-                    words on them:
-                  </p>
-                  <ul>
-                    <li>NIL (Negative for intraepithelial lesion)</li>
-                    <li>
-                      NILM (Negative for intraepithelial lesion or malignancy)
-                    </li>
-                    <li>If you had HPV testing, it will be negative</li>
-                  </ul>
-                  <p>
-                    Abnormal Pap smear results will have the following acronyms
-                    or words on them:
-                  </p>
-                  <ul>
-                    <li>
-                      ASCUS (atypical squamous cells of undetermined
-                      significance)
-                    </li>
-                    <li>
-                      LSIL/LGSIL (low grade squamous intraepithelial lesion)
-                    </li>
-                    <li>
-                      HSIL/HGSIL (high grade squamous intraepithelial lesion)
-                    </li>
-                    <li>ASC-H (atypical squamous cells)</li>
-                    <li>AGC (atypical glandular cells)</li>
-                    <li>
-                      If you had HPV testing, it may be positive or negative
-                    </li>
-                  </ul>
-                  <li>Were your Pap smear results normal?</li>
-                  <select
-                    name="normalDocAnswer"
-                    className="troubleshooting-dropdown"
-                    value={troubleshooting.normalDocAnswer}
-                    onChange={(e) =>
-                      handleOnTroubleshootingChange(
-                        "normalDocAnswer",
-                        e.target.value,
-                      )
-                    }
-                  >
-                    <option value="">Select an Option</option>
-                    <option value="yes">
-                      Yes, my Pap smear results were normal
-                    </option>
-                    <option value="no">
-                      No, my Pap smear results were abnormal
-                    </option>
-                  </select>
-                </div>
-              )}
 
             {/* Doesn't know results → how to get them */}
             {troubleshooting.documentationAnswer === "no" && (
@@ -1709,7 +1855,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               </div>
             )}
 
-            {/* Normal pap result (21-29) → due in 3 years directly, no HPV question */}
+            {/* Normal pap result (21-29) → due in 3 years directly, no HPV question
             {troubleshooting.normalDocAnswer === "yes" &&
               ageGroup === "21-29" && (
                 <div className="question">
@@ -1741,7 +1887,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     Program in Rhode Island.
                   </p>
                 </div>
-              )}
+              )} */}
 
             {/* Normal pap result (30-65) → HPV co-test question */}
             {troubleshooting.normalDocAnswer === "yes" &&
@@ -1760,45 +1906,49 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     }
                   >
                     <option value="">Select an Option</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                    <option value="cantremember">I don't know</option>
+                    <option value="yes">Yes, I was tested for HPV</option>
+                    <option value="no">No, I was not tested for HPV</option>
+                    <option value="cantremember">
+                      I don't know if I was tested for HPV
+                    </option>
                   </select>
                 </div>
               )}
 
             {/* Abnormal pap result → overdue */}
-            {troubleshooting.normalDocAnswer === "no" && (
-              <div className="question">
-                <p>
-                  You are likely due now or overdue for cervical cancer
-                  screening. If you do not have a provider, please see{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    this page
-                  </a>{" "}
-                  for healthcare providers who can provide screening. If you do
-                  not have health insurance or cannot afford to visit the
-                  doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
-                </p>
-              </div>
-            )}
+            {ageGroup === "30-65" &&
+              troubleshooting.normalDocAnswer === "no" && (
+                <div className="question">
+                  <p>
+                    You are likely due now or overdue for cervical cancer
+                    screening. If you do not have a provider, please see{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      this page
+                    </a>{" "}
+                    for healthcare providers who can provide screening. If you
+                    do not have health insurance or cannot afford to visit the
+                    doctor, click{" "}
+                    <a
+                      href="https://health.ri.gov/programs/womenscancerscreening/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      here
+                    </a>{" "}
+                    for more information about the Women's Cancer Screening
+                    Program in Rhode Island.
+                  </p>
+                </div>
+              )}
 
             {/* Normal pap, no HPV test → due in 3 years */}
-            {troubleshooting.prevHPVAnswer === "no" && (
+            {(troubleshooting.prevHPVAnswer === "no" ||
+              troubleshooting.prevHPVAnswer === "cantremember") && (
               <div className="question">
                 <p>
                   You are likely due for cervical cancer screening 3 years from
@@ -1812,52 +1962,9 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     rel="noopener noreferrer"
                     className="menuhover"
                   >
-                    this page
+                    see this page to find a medical provider
                   </a>{" "}
-                  for healthcare providers who can provide screening. If you do
-                  not have health insurance or cannot afford to visit the
-                  doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
-                </p>
-              </div>
-            )}
-
-            {/* Normal pap, can't remember HPV → overdue */}
-            {troubleshooting.prevHPVAnswer === "cantremember" && (
-              <div className="question">
-                <p>
-                  You are likely due now or overdue for cervical cancer
-                  screening. Please schedule an appointment with your healthcare
-                  provider for a Pap smear. If you do not have a doctor, please
-                  see{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    this page
-                  </a>{" "}
-                  for healthcare providers who can provide screening. If you do
-                  not have health insurance or cannot afford to visit the
-                  doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  in your area and schedule a Pap smear.
                 </p>
               </div>
             )}
@@ -1892,10 +1999,10 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {troubleshooting.positiveHPVAnswer === "yes" && (
               <div className="question">
                 <p>
-                  You are likely due now or overdue for cervical cancer
-                  screening. Please schedule an appointment with your healthcare
-                  provider for a Pap smear. If you do not have a provider,
-                  please see{" "}
+                  A positive HPV test is abnormal. You are likely due now or
+                  overdue for cervical cancer screening. Please schedule an
+                  appointment with your healthcare provider for a Pap smear. If
+                  you do not have a provider, please see{" "}
                   <a
                     href="/providers"
                     target="_blank"
@@ -1905,17 +2012,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     this page
                   </a>{" "}
                   for healthcare providers who can provide screening and
-                  schedule a Pap smear. If you do not have health insurance or
-                  cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  schedule a Pap smear in your area.
                 </p>
               </div>
             )}
@@ -1936,17 +2033,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     this page
                   </a>{" "}
                   for healthcare providers who can provide screening and
-                  schedule a Pap smear. If you do not have health insurance or
-                  cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  schedule a Pap smear.
                 </p>
               </div>
             )}
@@ -1955,21 +2042,13 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {troubleshooting.positiveHPVAnswer === "no" && (
               <div className="question">
                 <p>
-                  You are likely due for your next cervical cancer screening{" "}
-                  <b>5 years</b> after your normal co-test (negative HPV test
-                  and normal Pap test). For example, if your most recent normal
-                  co-test was in January 2025, your next cervical cancer
-                  screening would be in January 2030. You can choose from one of
-                  three options for your next screening:
+                  A negative HPV test is normal. You are likely due for your
+                  next cervical cancer screening <b>5 years</b> after your
+                  normal co-test (negative HPV test and normal Pap test). For
+                  example, if your most recent normal co-test was in January
+                  2025, your next cervical cancer screening would be in January
+                  2030.
                 </p>
-                <ol>
-                  <li>
-                    Continue to co-test (have a Pap test and an HPV test) every
-                    5 years
-                  </li>
-                  <li>Have a Pap test alone every 3 years</li>
-                  <li>Have an HPV test alone every 5 years</li>
-                </ol>
                 <p>
                   If you do not have a provider, please see{" "}
                   <a
@@ -1980,21 +2059,22 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     this page
                   </a>{" "}
-                  for healthcare providers who can provide screening. If you do
-                  not have health insurance or cannot afford to visit the
-                  doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  for healthcare providers who can provide screening.
                 </p>
               </div>
             )}
+
+            {(ageGroup === "21-29" || ageGroup === "30-65") &&
+              troubleshooting.cervixAnswer === "unsure" && (
+                <div className="question">
+                  <p>
+                    The best way to confirm that you have a cervix is to check
+                    with your surgeon or undergo a pelvic exam with a healthcare
+                    provider. This will determine whether you need Pap smears in
+                    the future. Click here if you need a provider.
+                  </p>
+                </div>
+              )}
           </ol>
         </div>
       </form>
