@@ -67,7 +67,7 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
             . Please see the video below for more information.
             <p>
               <a href="https://www.acog.org/womens-health/videos/cervical-cancer-screening">
-                Learn more about cervical cancer screening here.
+                https://www.acog.org/womens-health/videos/cervical-cancer-screening
               </a>{" "}
             </p>
           </p>
@@ -146,7 +146,7 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
               care professional.
             </p>
             <p>
-              Click <a href="https://www.gardasil9.com/">here</a> for more
+              Click <a href="https://www.gardasil9.com/">https://www.gardasil9.com/</a> for more
               information.
             </p>
           </div>
@@ -304,9 +304,9 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
               communicate with your doctor, and support care between visits.
             </p>
             <p>
-              Learn more here:{" "}
+              Learn more{" "}
               <a href="https://www.healthit.gov/faq/what-patient-portal#:~:text=A%20patient%20portal%20is%20a,Recent%20doctor%20visits">
-                LINK
+                here.
               </a>
             </p>
           </div>

@@ -49,6 +49,9 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
       "everAbnormalPap",
       "papAnswer",
       "documentationAnswer",
+      "whenPap",
+      "lastPapResult",
+      "knowResults",
       "normalDocAnswer",
       "prevHPVAnswer",
       "positiveHPVAnswer",
@@ -58,10 +61,8 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
       "last12papresult",
       "last12papresultabnormal",
       "dysplasiaAnswer",
-      "hpvPositive",
-      "normalDocAnswer",
-      "knowResults",
       "hadHpvTesting",
+      "hpvPositive",
     ];
     const resetIndex = resetKeys.indexOf(key);
     if (resetIndex !== -1) {
@@ -179,7 +180,9 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   }
                 >
                   <option value="">Select an Option</option>
-                  <option value="yes">Yes</option>
+                  <option value="yes">
+                    Yes, my most recent Pap smear was less than 12 months ago
+                  </option>
                   <option value="no">
                     No, my most recent Pap smear was more than 12 months ago
                   </option>
@@ -199,17 +202,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   <p>
                     You are likely due now or overdue for cervical cancer
                     screening. Please schedule an appointment with your
-                    healthcare provider for screening. If you do not have a
-                    provider, please see{" "}
-                    <a
-                      href="/providers"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="menuhover"
-                    >
-                      this page
-                    </a>{" "}
-                    to find a medical provider in your area.
+                    healthcare provider for screening. If you do not have a provider, please {" "}
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -299,19 +301,21 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.last12papresult === "no" && (
                 <div className="question">
                   <p>
-                    You can get your Pap smear results a few different ways:
+                    There are a few ways to find out if you have ever had a Pap
+                    smear:
                   </p>
                   <ol>
                     <li>
                       <b>Call your doctor:</b> You can call your doctor's office
-                      and have your results read to you or request a copy via
-                      email, mail, or fax. You may need to sign a permission
-                      form.
+                      and ask if you have ever had a Pap smear. If so, you can
+                      have the result read to you or request a copy of your
+                      results via email, mail, or fax. You may need to sign a
+                      permission form.
                     </li>
                     <li>
                       <b>Visit your doctor:</b> You can visit your doctor
-                      in-person to request a copy. You may need to sign a
-                      permission form.
+                      in-person to request a copy of your results via email,
+                      mail, or fax. You may need to sign a permission form.
                     </li>
                     <li>
                       <b>Log into your online health portal:</b> You may also be
@@ -337,18 +341,8 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       this page
                     </a>{" "}
-                    to find a medical provider and schedule screening as soon as
-                    possible. If you do not have health insurance or cannot
-                    afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    to find a medical provider in your area and schedule
+                    screening as soon as possible.
                   </p>
                 </div>
               )}
@@ -543,7 +537,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               (troubleshooting.cervixAnswer === "no" ||
                 troubleshooting.cervixAnswer === "yesYesCervix") && (
                 <div className="question">
-                  <p> When was your last Pap smear?</p>
+                  <li> When was your last Pap smear?</li>
                   <select
                     name="whenPap"
                     className="troubleshooting-dropdown"
@@ -614,7 +608,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
 
             {ageGroup === "over65" && troubleshooting.whenPap === "over65" && (
               <div className="question">
-                <p>Do you know the results of your most recent Pap smear?</p>
+                <li>Do you know the results of your most recent Pap smear?</li>
                 <select
                   name="knowResults"
                   className="troubleshooting-dropdown"
@@ -646,18 +640,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     smears before it is safe to stop. You can get your Pap smear
                     results a few different ways:
                   </p>
+
                   <ol>
                     <li>
-                      <b>Call your doctor:</b> We highly recommend this option
-                      because results can easily be misinterpreted. You can call
-                      your doctor's office and have your history read to you or
-                      request a copy via email, mail, or fax. You may need to
-                      sign a permission form.
+                      <b>Call your doctor:</b> You can call your doctor's office
+                      and ask if you have ever had a Pap smear. If so, you can
+                      have the result read to you or request a copy of your
+                      results via email, mail, or fax. You may need to sign a
+                      permission form.
                     </li>
                     <li>
                       <b>Visit your doctor:</b> You can visit your doctor
-                      in-person to request a copy of your results. You may need
-                      to sign a permission form.
+                      in-person to request a copy of your results via email,
+                      mail, or fax. You may need to sign a permission form.
                     </li>
                     <li>
                       <b>Log into your online health portal:</b> You may also be
@@ -681,9 +676,10 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       rel="noopener noreferrer"
                       className="menuhover"
                     >
-                      this page to find a medical provider
+                      this page
                     </a>{" "}
-                    in your area and schedule a screening as soon as possible.
+                    to find a medical provider in your area and schedule
+                    screening as soon as possible.
                   </p>
                 </div>
               )}
@@ -761,7 +757,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     You are likely due now or overdue for cervical cancer
                     screening. Please schedule an appointment with your
                     healthcare provider for screening. If you do not have a
-                    provider, please
+                    provider, please {" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -784,7 +780,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     continue screening for cervical cancer past age 65. Please
                     schedule an appointment with your healthcare provider to
                     discuss if you need to continue screening. If you do not
-                    have a provider, please
+                    have a provider, please {" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -820,7 +816,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
 
             {ageGroup === "over65" && troubleshooting.whenPap === "under65" && (
               <div className="question">
-                <p>Do you know the results of your most recent Pap smear?</p>
+                <li>Do you know the results of your most recent Pap smear?</li>
                 <select
                   name="knowResults"
                   className="troubleshooting-dropdown"
@@ -852,18 +848,18 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     not up to date on your testing, you may need additional Pap
                     smears before it is safe to stop. You can get your Pap smear
                     results a few different ways:
-                    <ul>
+                    <ol>
                       <li>
-                        Call your doctor: You can call your doctor's office and
-                        ask if you have ever had screening. If so, you can have
-                        the result read to you or request a copy of your results
-                        via email, mail, or fax. You may need to sign a
-                        permission form.
+                        <b>Call your doctor:</b> You can call your doctor's
+                        office and ask if you have ever had a Pap smear. If so,
+                        you can have the result read to you or request a copy of
+                        your results via email, mail, or fax. You may need to
+                        sign a permission form.
                       </li>
                       <li>
-                        Visit your doctor: You can visit your doctor in-person
-                        to request a copy of your results via email, mail, or
-                        fax. You may need to sign a permission form.
+                        <b>Visit your doctor:</b> You can visit your doctor
+                        in-person to request a copy of your results via email,
+                        mail, or fax. You may need to sign a permission form.
                       </li>
                       <li>
                         <b>Log into your online health portal:</b> You may also
@@ -877,86 +873,86 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                         than one patient portal, so you may need to check
                         multiple patient portals to find your results.
                       </li>
-                      <li>
-                        If you are still unsure or you do not have a doctor,
-                        please
-                        <a
-                          href="/providers"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="menuhover"
-                        >
-                          see this page to find a medical provider
-                        </a>{" "}
-                        in your area.
-                      </li>
-                    </ul>
+                    </ol>
+                    <p>
+                      If you are still unsure or you do not have a doctor,
+                      please see{" "}
+                      <a
+                        href="/providers"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="menuhover"
+                      >
+                        this page
+                      </a>{" "}
+                      to find a medical provider in your area and schedule
+                      screening as soon as possible.
+                    </p>
                   </p>
                 </div>
               )}
 
             {ageGroup === "over65" &&
               troubleshooting.whenPap === "under65" &&
-              troubleshooting.knowResults === "yes" &&
-              troubleshooting.normalDocAnswer === "normal" && (
-                  <div className="question">
-                    <p>
-                      The next question will ask you about your Pap smear
-                      results. Normal Pap smear results will have the following
-                      acronym or words on them:
-                    </p>
-                    <ul>
-                      <li>NIL (negative for intraepithelial lesion)</li>
-                      <li>
-                        NILM (negative for intraepithelial lesion or malignancy)
-                      </li>
-                      <li>If you had HPV testing, a normal test is negative</li>
-                    </ul>
-                    <p>
-                      Abnormal Pap smear results will have the following
-                      acronyms or words on them:
-                    </p>
-                    <ul>
-                      <li>
-                        ASCUS (atypical squamous cells of undetermined
-                        significance)
-                      </li>
-                      <li>
-                        LSIL/LGSIL (low grade squamous intraepithelial lesion)
-                      </li>
-                      <li>
-                        HSIL/HGSIL (high grade squamous intraepithelial lesion)
-                      </li>
-                      <li>ASC-H (atypical squamous cells)</li>
-                      <li>AGC (atypical glandular cells)</li>
-                      <li>
-                        If you had HPV testing, a positive HPV test is abnormal
-                      </li>
-                    </ul>
+              troubleshooting.knowResults === "yes" && (
+                <div className="question">
+                  <p>
+                    The next question will ask you about your Pap smear results.
+                    Normal Pap smear results will have the following acronym or
+                    words on them:
+                  </p>
+                  <ul>
+                    <li>NIL (negative for intraepithelial lesion)</li>
                     <li>
-                      Have you <u>ever</u> had abnormal Pap smear results?
+                      NILM (negative for intraepithelial lesion or malignancy)
                     </li>
-                    <select
-                      name="normalDocAnswer"
-                      className="troubleshooting-dropdown"
-                      value={troubleshooting.normalDocAnswer}
-                      onChange={(e) =>
-                        handleOnTroubleshootingChange(
-                          "normalDocAnswer",
-                          e.target.value,
-                        )
-                      }
-                    >
-                      <option value="">Select an Option</option>
-                      <option value="normal">
-                        Yes, my Pap smear results were normal
-                      </option>
-                      <option value="abnormal">
-                        No, my Pap smear results were abnormal
-                      </option>
-                    </select>
-                  </div>
-            )}
+                    <li>If you had HPV testing, a normal test is negative</li>
+                  </ul>
+                  <p>
+                    Abnormal Pap smear results will have the following acronyms
+                    or words on them:
+                  </p>
+                  <ul>
+                    <li>
+                      ASCUS (atypical squamous cells of undetermined
+                      significance)
+                    </li>
+                    <li>
+                      LSIL/LGSIL (low grade squamous intraepithelial lesion)
+                    </li>
+                    <li>
+                      HSIL/HGSIL (high grade squamous intraepithelial lesion)
+                    </li>
+                    <li>ASC-H (atypical squamous cells)</li>
+                    <li>AGC (atypical glandular cells)</li>
+                    <li>
+                      If you had HPV testing, a positive HPV test is abnormal
+                    </li>
+                  </ul>
+                  <li>
+                    Were your last Pap smear results <b>normal</b>?
+                  </li>
+                  <select
+                    name="normalDocAnswer"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.normalDocAnswer}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange(
+                        "normalDocAnswer",
+                        e.target.value,
+                      )
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="normal">
+                      Yes, my Pap smear results were normal
+                    </option>
+                    <option value="abnormal">
+                      No, my Pap smear results were abnormal
+                    </option>
+                  </select>
+                </div>
+              )}
 
             {ageGroup === "over65" &&
               troubleshooting.whenPap === "under65" &&
@@ -966,9 +962,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   <p>
                     You are likely due now or overdue for cervical cancer
                     screening. Please schedule an appointment with your
-                    healthcare provider for screening. If you do not have a
-                    provider, please see this page to find a medical provider in
-                    your area.
+                    healthcare provider for screening. If you do not have a provider, please {" "}
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1018,9 +1021,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     stop getting Pap smears, it is recommended to continue
                     having regular pelvic exams every 2 years, as there is still
                     a risk for other conditions such as cancer of the ovary or
-                    vulva. If you do not have a provider, please see this page
-                    to find a medical provider in your area and schedule your
-                    next Pap smear.
+                    vulva.
+                    <br />
+                    <br />
+                    If you do not have a provider, please {" "}
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1033,7 +1046,17 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <div className="question">
                   <li>
                     Did you test positive for HPV?
-                    <select name="hpvPositive" id="hpvPositive">
+                    <select
+                      name="hpvPositive"
+                      className="troubleshooting-dropdown"
+                      value={troubleshooting.hpvPositive}
+                      onChange={(e) =>
+                        handleOnTroubleshootingChange(
+                          "hpvPositive",
+                          e.target.value,
+                        )
+                      }
+                    >
                       <option value="">Select an answer</option>
                       <option value="yes">Yes, my HPV test was positive</option>
                       <option value="no">No, my HPV test was negative</option>
@@ -1055,9 +1078,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   <p>
                     A positive HPV test is abnormal. You are likely due now or
                     overdue for cervical cancer screening. Please schedule an
-                    appointment with your healthcare provider for screening. If
-                    you do not have a provider, please see this page to find a
-                    medical provider in your area.
+                    appointment with your healthcare provider for screening. 
+                    <br />
+                    <br />
+                    If you do not have a provider, please{" "}
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1079,9 +1112,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     you need further Pap smears. Even after you stop getting Pap
                     smears, it is recommended to continue having regular pelvic
                     exams every 2 years, as there is still a risk for other
-                    conditions such as cancer of the ovary or vulva. If you do
-                    not have a provider, please see this page to find a medical
-                    provider in your area and schedule your next Pap smear.
+                    conditions such as cancer of the ovary or vulva. 
+                    <br />
+                    <br />
+                    If you do not have a provider, please {" "}
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1100,9 +1143,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     not up to date on your testing, you may need additional Pap
                     smears before it is safe to stop. You can call your doctor
                     for your HPV results. If your HPV test was positive, you may
-                    be due now or overdue for cervical cancer screening. If you
-                    do not have a provider, please see this page to find a
-                    medical provider in your area and schedule screening.
+                    be due now or overdue for cervical cancer screening. 
+                    <br />
+                    <br />
+                    If you do not have a provider, please{" "}
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1123,9 +1176,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     stop getting Pap smears, it is recommended to continue
                     having regular pelvic exams every 2 years, as there is still
                     a risk for other conditions such as cancer of the ovary or
-                    vulva. If you do not have a provider, please see this page
-                    to find a medical provider in your area and schedule your
-                    next Pap smear.
+                    vulva. 
+                    <br />
+                    <br />
+                    If you do not have a provider, please {" "}
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    see this page to find a medical provider
+                  </a>{" "}
+                  in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1199,7 +1262,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   You are likely due now or overdue for cervical cancer
                   screening. Please schedule an appointment with your healthcare
-                  provider for screening. If you do not have a provider, please
+                  provider for screening. If you do not have a provider, please {" "}
                   <a
                     href="/providers"
                     target="_blank"
@@ -1208,7 +1271,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     see this page to find a medical provider
                   </a>{" "}
-                  in your area.
+                  in your area and schedule your next Pap smear.
                 </p>
               )}
 
@@ -1220,17 +1283,18 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   There are a few ways to find out if you have ever had a Pap
                   smear:
                 </p>
-                <ul>
+                <ol>
                   <li>
-                    Call your doctor: You can call your doctor's office and ask
-                    if you have ever had screening. If so, you can have the
-                    result read to you or request a copy of your results via
-                    email, mail, or fax. You may need to sign a permission form.
+                    <b>Call your doctor:</b> You can call your doctor's office
+                    and ask if you have ever had a Pap smear. If so, you can
+                    have the result read to you or request a copy of your
+                    results via email, mail, or fax. You may need to sign a
+                    permission form.
                   </li>
                   <li>
-                    Visit your doctor: You can visit your doctor in-person to
-                    request a copy of your results via email, mail, or fax. You
-                    may need to sign a permission form.
+                    <b>Visit your doctor:</b> You can visit your doctor
+                    in-person to request a copy of your results via email, mail,
+                    or fax. You may need to sign a permission form.
                   </li>
                   <li>
                     <b>Log into your online health portal:</b> You may also be
@@ -1244,19 +1308,21 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     so you may need to check multiple patient portals to find
                     your results.
                   </li>
-                  <li>
-                    If you are still unsure or you do not have a doctor, please
-                    <a
-                      href="/providers"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="menuhover"
-                    >
-                      see this page to find a medical provider
-                    </a>{" "}
-                    in your area.
-                  </li>
-                </ul>
+                </ol>
+                <p>
+                  If you are still unsure or you do not have a doctor, please
+                  see{" "}
+                  <a
+                    href="/providers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menuhover"
+                  >
+                    this page
+                  </a>{" "}
+                  to find a medical provider in your area and schedule screening
+                  as soon as possible.
+                </p>
               </div>
             )}
 
@@ -1264,20 +1330,21 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.lastPapResult === "unknown" && (
                 <div className="question">
                   <p>
-                    You can get your Pap smear results a few different ways:
+                    There are a few ways to find out if you have ever had a Pap
+                    smear:
                   </p>
                   <ol>
                     <li>
-                      <b>Call your doctor:</b> We highly recommend this option
-                      because results can easily be misinterpreted. You can call
-                      your doctor's office and have your history read to you or
-                      request a copy via email, mail, or fax. You may need to
-                      sign a permission form.
+                      <b>Call your doctor:</b> You can call your doctor's office
+                      and ask if you have ever had a Pap smear. If so, you can
+                      have the result read to you or request a copy of your
+                      results via email, mail, or fax. You may need to sign a
+                      permission form.
                     </li>
                     <li>
                       <b>Visit your doctor:</b> You can visit your doctor
-                      in-person to request a copy of your results. You may need
-                      to sign a permission form.
+                      in-person to request a copy of your results via email,
+                      mail, or fax. You may need to sign a permission form.
                     </li>
                     <li>
                       <b>Log into your online health portal:</b> You may also be
@@ -1301,9 +1368,10 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                       rel="noopener noreferrer"
                       className="menuhover"
                     >
-                      this page to find a medical provider
+                      this page
                     </a>{" "}
-                    in your area and schedule a screening as soon as possible.
+                    to find a medical provider in your area and schedule
+                    screening as soon as possible.
                   </p>
                 </div>
               )}
@@ -1460,9 +1528,14 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   good chance the cervix was also removed at the same time
                   because these organs are connected. However, sometimes a
                   “supracervical” hysterectomy is performed, which means you
-                  keep your cervix. If you no longer have a cervix, you may not
-                  need pap smears to continue to screen for cervical cancer. If
-                  you have not had a (a{" "}
+                  keep your cervix.
+                  <br />
+                  <br />
+                  If you no longer have a cervix, you may not need pap smears to
+                  continue to screen for cervical cancer.
+                  <br />
+                  <br />
+                  If you have not had a (a{" "}
                   <u
                     className="glossary-term"
                     onMouseOver={handleHover}
@@ -1635,7 +1708,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   You should continue to have Pap smears regularly for up to 25
                   years after treatment of the precancer. Please schedule an
                   appointment with your healthcare provider to inquire about
-                  your next screening. If you do not have a provider, please
+                  your next screening. If you do not have a provider, please {" "}
                   <a
                     href="/providers"
                     target="_blank"
@@ -1659,7 +1732,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   screening. It is recommended to continue having regular pelvic
                   exams every 2 years, as there is still a risk for other
                   conditions such as cancer of the ovary or vulva. If you do not
-                  have a provider, please see
+                  have a provider, please see {" "}
                   <a
                     href="/providers"
                     target="_blank"
@@ -1676,19 +1749,22 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {/* No cervix + unsure about dysplasia history */}
             {troubleshooting.dysplasiaAnswer === "unsure" && (
               <div className="question">
-                <p>You can get this information a few different ways:</p>
+                <p>
+                  There are a few ways to find out if you have ever had a Pap
+                  smear:
+                </p>
                 <ol>
                   <li>
-                    <b>Call your doctor:</b> We highly recommend this option
-                    because results can easily be misinterpreted. You can call
-                    your doctor's office and have your history read to you or
-                    request a copy via email, mail, or fax. You may need to sign
-                    a permission form.
+                    <b>Call your doctor:</b> You can call your doctor's office
+                    and ask if you have ever had a Pap smear. If so, you can
+                    have the result read to you or request a copy of your
+                    results via email, mail, or fax. You may need to sign a
+                    permission form.
                   </li>
                   <li>
                     <b>Visit your doctor:</b> You can visit your doctor
-                    in-person to request a copy of your results. You may need to
-                    sign a permission form.
+                    in-person to request a copy of your results via email, mail,
+                    or fax. You may need to sign a permission form.
                   </li>
                   <li>
                     <b>Log into your online health portal:</b> You may also be
@@ -1714,7 +1790,8 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     this page
                   </a>{" "}
-                  to find a medical provider and schedule a screening.
+                  to find a medical provider in your area and schedule screening
+                  as soon as possible.
                 </p>
               </div>
             )}
@@ -1763,7 +1840,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     recommendations. Your screening schedule will depend on how
                     abnormal your cells were (whether they were "high-grade")
                     and how long it has been since you had abnormal results. If
-                    you do not have a provider, please
+                    you do not have a provider, please {" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -1783,19 +1860,21 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.everAbnormalPap === "unsure" && (
                 <div className="question">
                   <p>
-                    You can get your Pap smear results a few different ways:
+                    There are a few ways to find out if you have ever had a Pap
+                    smear:
                   </p>
                   <ol>
                     <li>
                       <b>Call your doctor:</b> You can call your doctor's office
-                      and have your results read to you or request a copy via
-                      email, mail, or fax. You may need to sign a permission
-                      form.
+                      and ask if you have ever had a Pap smear. If so, you can
+                      have the result read to you or request a copy of your
+                      results via email, mail, or fax. You may need to sign a
+                      permission form.
                     </li>
                     <li>
                       <b>Visit your doctor:</b> You can visit your doctor
-                      in-person to request a copy. You may need to sign a
-                      permission form.
+                      in-person to request a copy of your results via email,
+                      mail, or fax. You may need to sign a permission form.
                     </li>
                     <li>
                       <b>Log into your online health portal:</b> You may also be
@@ -1811,17 +1890,18 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     </li>
                   </ol>
                   <p>
-                    If you are still unsure and you do not have a doctor, please
-                    click{" "}
+                    If you are still unsure or you do not have a doctor, please
+                    see{" "}
                     <a
                       href="/providers"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="menuhover"
                     >
-                      here
+                      this page
                     </a>{" "}
-                    for a list of providers.
+                    to find a medical provider in your area and schedule
+                    screening as soon as possible.
                   </p>
                 </div>
               )}
@@ -1903,7 +1983,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     the latest information about your reproductive health.
                     <br />
                     <br />
-                    If you do not have a provider, please
+                    If you do not have a provider, please {" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -1925,7 +2005,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     You are likely due now or overdue for cervical cancer
                     screening. Please schedule an appointment with your
                     healthcare provider for screening. If you do not have a
-                    provider, please
+                    provider, please {" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -1973,7 +2053,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     </li>
                   </ol>
                   <p>
-                    If you do not have a provider, please
+                    If you do not have a provider, please {" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -1982,17 +2062,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       see this page to find a medical provider
                     </a>{" "}
-                    in your area. If you do not have health insurance or cannot
-                    afford to visit the doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    in your area. 
                   </p>
                 </div>
               )}
@@ -2142,8 +2212,8 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     this page
                   </a>{" "}
-                  to find a medical provider in your area and schedule a Pap
-                  smear as soon as possible.
+                  to find a medical provider in your area and schedule screening
+                  as soon as possible.
                 </p>
               </div>
             )}
@@ -2242,11 +2312,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
             {/* Doesn't know results → how to get them */}
             {troubleshooting.documentationAnswer === "no" && (
               <div className="question">
-                <p>You can get your Pap smear results a few different ways.</p>
+                <p>
+                  There are a few ways to find out if you have ever had a Pap
+                  smear:
+                </p>
                 <ol>
                   <li>
                     <b>Call your doctor:</b> You can call your doctor's office
-                    and have your results read to you or request a copy of your
+                    and ask if you have ever had a Pap smear. If so, you can
+                    have the result read to you or request a copy of your
                     results via email, mail, or fax. You may need to sign a
                     permission form.
                   </li>
@@ -2257,7 +2331,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   </li>
                   <li>
                     <b>Log into your online health portal:</b> You may also be
-                    able to access your results online through a patient portal.
+                    able to access your records online through a patient portal.
                     Each health care system has a different patient portal.
                     These are sometimes called myChart or myResults. If you do
                     not know how to access your patient portal, call your
@@ -2279,18 +2353,8 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     this page
                   </a>{" "}
-                  to find a medical provider in your area and schedule a Pap
-                  smear as soon as possible. If you do not have health insurance
-                  or cannot afford to visit the doctor, click{" "}
-                  <a
-                    href="https://health.ri.gov/programs/womenscancerscreening/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  for more information about the Women's Cancer Screening
-                  Program in Rhode Island.
+                  to find a medical provider in your area and schedule screening
+                  as soon as possible.
                 </p>
               </div>
             )}
@@ -2370,18 +2434,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       this page
                     </a>{" "}
-                    for healthcare providers who can provide screening. If you
-                    do not have health insurance or cannot afford to visit the
-                    doctor, click{" "}
-                    <a
-                      href="https://health.ri.gov/programs/womenscancerscreening/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    for more information about the Women's Cancer Screening
-                    Program in Rhode Island.
+                    for healthcare providers who can provide screening.
                   </p>
                 </div>
               )}
@@ -2436,73 +2489,77 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               )}
 
             {/* HPV positive → overdue */}
-            {troubleshooting.positiveHPVAnswer === "yes" && (
-              <div className="question">
-                <p>
-                  A positive HPV test is abnormal. You are likely due now or
-                  overdue for cervical cancer screening. Please schedule an
-                  appointment with your healthcare provider for a Pap smear. If
-                  you do not have a provider, please see{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    this page
-                  </a>{" "}
-                  for healthcare providers who can provide screening and
-                  schedule a Pap smear in your area.
-                </p>
-              </div>
-            )}
+            {ageGroup === "30-65" &&
+              troubleshooting.positiveHPVAnswer === "yes" && (
+                <div className="question">
+                  <p>
+                    A positive HPV test is abnormal. You are likely due now or
+                    overdue for cervical cancer screening. Please schedule an
+                    appointment with your healthcare provider for a Pap smear.
+                    If you do not have a provider, please see{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      this page
+                    </a>{" "}
+                    for healthcare providers who can provide screening and
+                    schedule a Pap smear in your area.
+                  </p>
+                </div>
+              )}
 
             {/* Can't remember HPV result */}
-            {troubleshooting.positiveHPVAnswer === "cantremember" && (
-              <div className="question">
-                <p>
-                  You can call your doctor for your HPV results. If your HPV
-                  test was positive, you may be due now or overdue for cervical
-                  cancer screening. If you do not have a provider, please see{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    this page
-                  </a>{" "}
-                  for healthcare providers who can provide screening and
-                  schedule a Pap smear.
-                </p>
-              </div>
-            )}
+            {ageGroup === "30-65" &&
+              troubleshooting.positiveHPVAnswer === "cantremember" && (
+                <div className="question">
+                  <p>
+                    You can call your doctor for your HPV results. If your HPV
+                    test was positive, you may be due now or overdue for
+                    cervical cancer screening. If you do not have a provider,
+                    please see{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      this page
+                    </a>{" "}
+                    for healthcare providers who can provide screening and
+                    schedule a Pap smear.
+                  </p>
+                </div>
+              )}
 
             {/* HPV negative (co-test normal) → due in 5 years, with screening options */}
-            {troubleshooting.positiveHPVAnswer === "no" && (
-              <div className="question">
-                <p>
-                  A negative HPV test is normal. You are likely due for your
-                  next cervical cancer screening <b>5 years</b> after your
-                  normal co-test (negative HPV test and normal Pap test). For
-                  example, if your most recent normal co-test was in January
-                  2025, your next cervical cancer screening would be in January
-                  2030.
-                </p>
-                <p>
-                  If you do not have a provider, please see{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    this page
-                  </a>{" "}
-                  for healthcare providers who can provide screening.
-                </p>
-              </div>
-            )}
+            {ageGroup === "30-65" &&
+              troubleshooting.positiveHPVAnswer === "no" && (
+                <div className="question">
+                  <p>
+                    A negative HPV test is normal. You are likely due for your
+                    next cervical cancer screening <b>5 years</b> after your
+                    normal co-test (negative HPV test and normal Pap test). For
+                    example, if your most recent normal co-test was in January
+                    2025, your next cervical cancer screening would be in
+                    January 2030.
+                  </p>
+                  <p>
+                    If you do not have a provider, please see{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      this page
+                    </a>{" "}
+                    for healthcare providers who can provide screening.
+                  </p>
+                </div>
+              )}
 
             {(ageGroup === "21-29" || ageGroup === "30-65") &&
               troubleshooting.cervixAnswer === "unsure" && (
