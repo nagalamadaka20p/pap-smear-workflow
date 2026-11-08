@@ -66,9 +66,13 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
             </u>
             . Please see the video below for more information.
             <p>
-              <a href="https://www.acog.org/womens-health/videos/cervical-cancer-screening">
+              <a
+                href="https://www.acog.org/womens-health/videos/cervical-cancer-screening"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 https://www.acog.org/womens-health/videos/cervical-cancer-screening
-              </a>{" "}
+              </a>
             </p>
           </p>
         )}
@@ -146,8 +150,15 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
               care professional.
             </p>
             <p>
-              Click <a href="https://www.gardasil9.com/">https://www.gardasil9.com/</a> for more
-              information.
+              Click{" "}
+              <a
+                href="https://www.gardasil9.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.gardasil9.com/
+              </a>{" "}
+              for more information.
             </p>
           </div>
         )}
@@ -176,7 +187,11 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
               progresses to cervical cancer. This is why it is so important to
               get your Pap smears and HPV testing. For more information from the
               CDC, click{" "}
-              <a href="https://www.cdc.gov/cancer/cervical/basic_info/screening.htm#:~:text=Cervical%20precancer%20usually%20doesn't,Cervical%20Cancer%20Early%20Detection%20Program">
+              <a
+                href="https://www.cdc.gov/cancer/cervical/basic_info/screening.htm#:~:text=Cervical%20precancer%20usually%20doesn't,Cervical%20Cancer%20Early%20Detection%20Program"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 here
               </a>{" "}
               . To learn about how cervical precancer is treated, see “What is a
@@ -249,17 +264,13 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
               src="https://nycgyne.com/wp-content/uploads/2025/01/leep-colposcopy-768x768.jpg.webp"
               alt=" LEEP"
             ></img>
-            <p>
-              Image:
-              https://nycgyne.com/colposcopy-leep-procedure-nyc-gyn/
-            </p>
+            <p>Image: https://nycgyne.com/colposcopy-leep-procedure-nyc-gyn/</p>
             <img
               src="https://nycgyne.com/wp-content/uploads/2025/01/cone-biopsy-conization-768x768.jpg.webp"
               alt=" Conization/Cone Biopsy"
             ></img>
             <p>
-              Image:
-              https://nycgyne.com/womens-health/cone-biopsy-conization/
+              Image: https://nycgyne.com/womens-health/cone-biopsy-conization/
             </p>
           </div>
         )}
@@ -305,12 +316,31 @@ const Home = ({ glossary, handleHover, handleMouseOut }) => {
             </p>
             <p>
               Learn more{" "}
-              <a href="https://www.healthit.gov/faq/what-patient-portal#:~:text=A%20patient%20portal%20is%20a,Recent%20doctor%20visits">
+              <a
+                href="https://www.healthit.gov/faq/what-patient-portal#:~:text=A%20patient%20portal%20is%20a,Recent%20doctor%20visits"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 here.
               </a>
             </p>
           </div>
         )}
+      </div>
+      <div className="additional-resources">
+        <h2 style={{ color: "green" }}>Additional Resources Available</h2>
+        <p>
+          For additional information on cervical cancer screening please visit
+          the{" "}
+          <a
+            href="https://www.acog.org/womens-health/faqs/cervical-cancer-screening"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ACOG cervical cancer screening website
+          </a>
+          .
+        </p>
       </div>
     </div>
   );

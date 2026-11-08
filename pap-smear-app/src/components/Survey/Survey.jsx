@@ -202,16 +202,17 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   <p>
                     You are likely due now or overdue for cervical cancer
                     screening. Please schedule an appointment with your
-                    healthcare provider for screening. If you do not have a provider, please {" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    see this page to find a medical provider
-                  </a>{" "}
-                  in your area and schedule your next Pap smear.
+                    healthcare provider for screening. If you do not have a
+                    provider, please{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      see this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -380,8 +381,15 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     <li>
                       HSIL/HGSIL (high grade squamous intraepithelial lesion)
                     </li>
-                    <li>ASC-H (atypical squamous cells)</li>
+                    <li>
+                      ASC-H (atypical squamous cells- cannot rule out high-grade
+                      squamous intraepithelial lesion)
+                    </li>
                     <li>AGC (atypical glandular cells)</li>
+                    <li>
+                      If you had HPV testing, a <b>positive</b> HPV test is
+                      abnormal
+                    </li>
                   </ul>
                   <li>Were your Pap smear results normal?</li>
                   <select
@@ -489,8 +497,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     to continue to screen for cervical cancer.
                     <br />
                     <br />
-                    If you have not had a hysterectomy, you still have a cervix
-                    and should continue to screen for cervical cancer.
+                    If you have not had a{" "}
+                    <u
+                      className="glossary-term"
+                      onMouseOver={handleHover}
+                      onMouseOut={handleMouseOut}
+                    >
+                      hysterectomy
+                    </u>
+                    , you still have a cervix and should continue to screen for
+                    cervical cancer.
                   </p>
                   <li>
                     Have you had a{" "}
@@ -715,10 +731,14 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     <li>
                       HSIL/HGSIL (high grade squamous intraepithelial lesion)
                     </li>
-                    <li>ASC-H (atypical squamous cells)</li>
+                    <li>
+                      ASC-H (atypical squamous cells - cannot rule out
+                      high-grade squamous intraepithelial lesion)
+                    </li>
                     <li>AGC (atypical glandular cells)</li>
                     <li>
-                      If you had HPV testing, a positive HPV test is abnormal
+                      If you had HPV testing, a <b>positive</b> HPV test is
+                      abnormal
                     </li>
                   </ul>
                   <li>
@@ -754,10 +774,11 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.normalDocAnswer === "abnormal" && (
                 <div className="question">
                   <p>
-                    You are likely due now or overdue for cervical cancer
-                    screening. Please schedule an appointment with your
-                    healthcare provider for screening. If you do not have a
-                    provider, please {" "}
+                    You are likely due for cervical cancer screening 3 years
+                    from the date of your last Pap smear. For example, if your
+                    most recent Pap smear was in January 2025, your next Pap
+                    smear would be in January 2028. If you do not have a doctor,
+                    please{" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -766,7 +787,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       see this page to find a medical provider
                     </a>{" "}
-                    in your area.
+                    in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -780,7 +801,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     continue screening for cervical cancer past age 65. Please
                     schedule an appointment with your healthcare provider to
                     discuss if you need to continue screening. If you do not
-                    have a provider, please {" "}
+                    have a provider, please{" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -923,10 +944,14 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     <li>
                       HSIL/HGSIL (high grade squamous intraepithelial lesion)
                     </li>
-                    <li>ASC-H (atypical squamous cells)</li>
+                    <li>
+                      ASC-H (atypical squamous cells - cannot rule out
+                      high-grade squamous intraepithelial lesion)
+                    </li>
                     <li>AGC (atypical glandular cells)</li>
                     <li>
-                      If you had HPV testing, a positive HPV test is abnormal
+                      If you had HPV testing, a <b>positive</b> HPV test is
+                      abnormal
                     </li>
                   </ul>
                   <li>
@@ -960,18 +985,20 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.normalDocAnswer === "abnormal" && (
                 <div className="question">
                   <p>
-                    You are likely due now or overdue for cervical cancer
-                    screening. Please schedule an appointment with your
-                    healthcare provider for screening. If you do not have a provider, please {" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    see this page to find a medical provider
-                  </a>{" "}
-                  in your area and schedule your next Pap smear.
+                    You are likely due for cervical cancer screening 3 years
+                    from the date of your last Pap smear. For example, if your
+                    most recent Pap smear was in January 2025, your next Pap
+                    smear would be in January 2028. If you do not have a doctor,
+                    please{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      see this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -981,27 +1008,25 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.knowResults === "yes" &&
               troubleshooting.normalDocAnswer === "normal" && (
                 <div className="question">
-                  <li>
-                    Did you have HPV testing with your last Pap smear?
-                    <select
-                      name="hadHpvTesting"
-                      className="troubleshooting-dropdown"
-                      value={troubleshooting.hadHpvTesting}
-                      onChange={(e) =>
-                        handleOnTroubleshootingChange(
-                          "hadHpvTesting",
-                          e.target.value,
-                        )
-                      }
-                    >
-                      <option value="">Select an Option</option>
-                      <option value="yes">Yes, I was tested for HPV </option>
-                      <option value="no">No, I was not tested for HPV </option>
-                      <option value="unsure">
-                        I don’t know if I was tested for HPV
-                      </option>
-                    </select>
-                  </li>
+                  <li>Did you have HPV testing with your last Pap smear?</li>
+                  <select
+                    name="hadHpvTesting"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.hadHpvTesting}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange(
+                        "hadHpvTesting",
+                        e.target.value,
+                      )
+                    }
+                  >
+                    <option value="">Select an Option</option>
+                    <option value="yes">Yes, I was tested for HPV </option>
+                    <option value="no">No, I was not tested for HPV </option>
+                    <option value="unsure">
+                      I don’t know if I was tested for HPV
+                    </option>
+                  </select>
                 </div>
               )}
 
@@ -1024,16 +1049,16 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     vulva.
                     <br />
                     <br />
-                    If you do not have a provider, please {" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    see this page to find a medical provider
-                  </a>{" "}
-                  in your area and schedule your next Pap smear.
+                    If you do not have a provider, please{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      see this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1044,27 +1069,25 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.normalDocAnswer === "normal" &&
               troubleshooting.hadHpvTesting === "yes" && (
                 <div className="question">
-                  <li>
-                    Did you test positive for HPV?
-                    <select
-                      name="hpvPositive"
-                      className="troubleshooting-dropdown"
-                      value={troubleshooting.hpvPositive}
-                      onChange={(e) =>
-                        handleOnTroubleshootingChange(
-                          "hpvPositive",
-                          e.target.value,
-                        )
-                      }
-                    >
-                      <option value="">Select an answer</option>
-                      <option value="yes">Yes, my HPV test was positive</option>
-                      <option value="no">No, my HPV test was negative</option>
-                      <option value="unsure">
-                        I don’t remember my HPV results
-                      </option>
-                    </select>
-                  </li>
+                  <li>Did you test positive for HPV?</li>
+                  <select
+                    name="hpvPositive"
+                    className="troubleshooting-dropdown"
+                    value={troubleshooting.hpvPositive}
+                    onChange={(e) =>
+                      handleOnTroubleshootingChange(
+                        "hpvPositive",
+                        e.target.value,
+                      )
+                    }
+                  >
+                    <option value="">Select an answer</option>
+                    <option value="yes">Yes, my HPV test was positive</option>
+                    <option value="no">No, my HPV test was negative</option>
+                    <option value="unsure">
+                      I don’t remember my HPV results
+                    </option>
+                  </select>
                 </div>
               )}
 
@@ -1078,19 +1101,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   <p>
                     A positive HPV test is abnormal. You are likely due now or
                     overdue for cervical cancer screening. Please schedule an
-                    appointment with your healthcare provider for screening. 
+                    appointment with your healthcare provider for screening.
                     <br />
                     <br />
                     If you do not have a provider, please{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    see this page to find a medical provider
-                  </a>{" "}
-                  in your area and schedule your next Pap smear.
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      see this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1112,19 +1135,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     you need further Pap smears. Even after you stop getting Pap
                     smears, it is recommended to continue having regular pelvic
                     exams every 2 years, as there is still a risk for other
-                    conditions such as cancer of the ovary or vulva. 
+                    conditions such as cancer of the ovary or vulva.
                     <br />
                     <br />
-                    If you do not have a provider, please {" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    see this page to find a medical provider
-                  </a>{" "}
-                  in your area and schedule your next Pap smear.
+                    If you do not have a provider, please{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      see this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1143,19 +1166,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     not up to date on your testing, you may need additional Pap
                     smears before it is safe to stop. You can call your doctor
                     for your HPV results. If your HPV test was positive, you may
-                    be due now or overdue for cervical cancer screening. 
+                    be due now or overdue for cervical cancer screening.
                     <br />
                     <br />
                     If you do not have a provider, please{" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    see this page to find a medical provider
-                  </a>{" "}
-                  in your area and schedule your next Pap smear.
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      see this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1167,28 +1190,21 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
               troubleshooting.hadHpvTesting === "unsure" && (
                 <div className="question">
                   <p>
-                    In order to stop screening for cervical cancer, patients
-                    need at least 2 normal/negative Pap smears with HPV testing
-                    in the 10 years before turning age 65. Therefore, if you are
-                    not up to date on your testing, you may need additional Pap
-                    smears before it is safe to stop. Please talk to your doctor
-                    to confirm if you need further Pap smears. Even after you
-                    stop getting Pap smears, it is recommended to continue
-                    having regular pelvic exams every 2 years, as there is still
-                    a risk for other conditions such as cancer of the ovary or
-                    vulva. 
+                    You can call your doctor for your HPV results. If your HPV
+                    test was positive, you may be due now or overdue for
+                    cervical cancer screening.
                     <br />
                     <br />
-                    If you do not have a provider, please {" "}
-                  <a
-                    href="/providers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menuhover"
-                  >
-                    see this page to find a medical provider
-                  </a>{" "}
-                  in your area and schedule your next Pap smear.
+                    If you do not have a provider, please{" "}
+                    <a
+                      href="/providers"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="menuhover"
+                    >
+                      see this page to find a medical provider
+                    </a>{" "}
+                    in your area and schedule your next Pap smear.
                   </p>
                 </div>
               )}
@@ -1262,7 +1278,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                 <p>
                   You are likely due now or overdue for cervical cancer
                   screening. Please schedule an appointment with your healthcare
-                  provider for screening. If you do not have a provider, please {" "}
+                  provider for screening. If you do not have a provider, please{" "}
                   <a
                     href="/providers"
                     target="_blank"
@@ -1408,11 +1424,14 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     <li>
                       HSIL/HGSIL (high grade squamous intraepithelial lesion)
                     </li>
-                    <li>ASC-H (atypical squamous cells)</li>
+                    <li>
+                      ASC-H (atypical squamous cells - cannot rule out
+                      high-grade squamous intraepithelial lesion)
+                    </li>
                     <li>AGC (atypical glandular cells)</li>
                     <li>
-                      If you had HPV testing, it may be <b>positive</b> or{" "}
-                      <b>negative</b>
+                      If you had HPV testing, a <b>positive</b> HPV test is
+                      abnormal
                     </li>
                   </ul>
                   <li>Were your Pap smear results normal?</li>
@@ -1535,7 +1554,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   continue to screen for cervical cancer.
                   <br />
                   <br />
-                  If you have not had a (a{" "}
+                  If you have not had a{" "}
                   <u
                     className="glossary-term"
                     onMouseOver={handleHover}
@@ -1543,7 +1562,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   >
                     hysterectomy
                   </u>
-                  ),you still have a cervix and should continue to screen for
+                  ,you still have a cervix and should continue to screen for
                   cervical cancer.
                 </p>
                 <li>
@@ -1708,7 +1727,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   You should continue to have Pap smears regularly for up to 25
                   years after treatment of the precancer. Please schedule an
                   appointment with your healthcare provider to inquire about
-                  your next screening. If you do not have a provider, please {" "}
+                  your next screening. If you do not have a provider, please{" "}
                   <a
                     href="/providers"
                     target="_blank"
@@ -1732,7 +1751,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   screening. It is recommended to continue having regular pelvic
                   exams every 2 years, as there is still a risk for other
                   conditions such as cancer of the ovary or vulva. If you do not
-                  have a provider, please see {" "}
+                  have a provider, please see{" "}
                   <a
                     href="/providers"
                     target="_blank"
@@ -1840,7 +1859,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     recommendations. Your screening schedule will depend on how
                     abnormal your cells were (whether they were "high-grade")
                     and how long it has been since you had abnormal results. If
-                    you do not have a provider, please {" "}
+                    you do not have a provider, please{" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -1983,7 +2002,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     the latest information about your reproductive health.
                     <br />
                     <br />
-                    If you do not have a provider, please {" "}
+                    If you do not have a provider, please{" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -2005,7 +2024,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     You are likely due now or overdue for cervical cancer
                     screening. Please schedule an appointment with your
                     healthcare provider for screening. If you do not have a
-                    provider, please {" "}
+                    provider, please{" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -2053,7 +2072,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     </li>
                   </ol>
                   <p>
-                    If you do not have a provider, please {" "}
+                    If you do not have a provider, please{" "}
                     <a
                       href="/providers"
                       target="_blank"
@@ -2062,7 +2081,7 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     >
                       see this page to find a medical provider
                     </a>{" "}
-                    in your area. 
+                    in your area.
                   </p>
                 </div>
               )}
@@ -2279,11 +2298,14 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                   <li>
                     HSIL/HGSIL (high grade squamous intraepithelial lesion)
                   </li>
-                  <li>ASC-H (atypical squamous cells)</li>
+                  <li>
+                    ASC-H (atypical squamous cells - cannot rule out high-grade
+                    squamous intraepithelial lesion)
+                  </li>
                   <li>AGC (atypical glandular cells)</li>
                   <li>
-                    If you had HPV testing, it may be <b>positive</b> or{" "}
-                    <b>negative</b>
+                    If you had HPV testing, a <b>positive</b> HPV test is
+                    abnormal
                   </li>
                 </ul>
                 <li>Were your Pap smear results normal?</li>
@@ -2568,7 +2590,19 @@ function Survey({ glossary, handleHover, handleMouseOut }) {
                     The best way to confirm that you have a cervix is to check
                     with your surgeon or undergo a pelvic exam with a healthcare
                     provider. This will determine whether you need Pap smears in
-                    the future. Click here if you need a provider.
+                    the future.{" "}
+                    <p>
+                      If you do not have a provider, please see{" "}
+                      <a
+                        href="/providers"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="menuhover"
+                      >
+                        this page
+                      </a>{" "}
+                      for healthcare providers who can provide screening.
+                    </p>
                   </p>
                 </div>
               )}

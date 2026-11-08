@@ -10,9 +10,10 @@ import Glossary from "../Glossary/Glossary";
 
 function App() {
   const glossary = {
-    "Anus": "The opening at the end of the digestive tract where bowel contents leave the body.",
-    "Biopsy": "The removal of a small piece of tissue for examination under a microscope.",
-    "Cells":
+    Anus: "The opening at the end of the digestive tract where bowel contents leave the body.",
+    Biopsy:
+      "The removal of a small piece of tissue for examination under a microscope.",
+    Cells:
       "The smallest unit of a structure in the body. Cells are the building blocks for all parts of the body.",
     "Cervical Biopsy":
       "A minor surgical procedure to remove a small piece of cervical tissue that is then examined under a microscope in a laboratory.",
@@ -20,8 +21,9 @@ function App() {
       "A type of cancer that is in the cervix, the opening to the uterus at the top of the vagina.",
     "Cervical Cytology":
       "The study of cells taken from the cervix using a microscope. Also called a Pap test.",
-    "Cervix": "The lower, narrow end of the uterus at the top of the vagina.",
-    "Colposcopy":
+    Cervix:
+      "The cervix is a reproductive organ located at the end of the vagina, connected to the lower part of the uterus.",
+    Colposcopy:
       "Viewing of the cervix, vulva, or vagina under magnification with an instrument called a colposcope.",
     "Co-Testing":
       "Use of both the Pap test and human papillomavirus (HPV) test to screen for cervical cancer.",
@@ -35,20 +37,20 @@ function App() {
       "A virus that attacks certain cells of the body’s immune system. If left untreated, HIV can cause acquired immunodeficiency syndrome (AIDS).",
     "Human Papillomavirus (HPV)":
       "The name for a group of related viruses, some of which cause genital warts and some of which are linked to cancer of the cervix, vulva, vagina, penis, anus, mouth, and throat.",
-    "Hysterectomy": "Surgery to remove the uterus.",
+    Hysterectomy: "Surgery to remove the uterus.",
     "Immune System":
       "The body’s natural defense system against viruses and bacteria that cause disease.",
-    "LEEP":
-      "Loop Electrosurgical Excision Procedure -- A procedure that removes abnormal tissue from the cervix using a thin wire loop and electric energy.",
-    "Menopause":
+    LEEP: "Loop Electrosurgical Excision Procedure -- A procedure that removes abnormal tissue from the cervix using a thin wire loop and electric energy.",
+    Menopause:
       "The time when a woman’s menstrual periods stop permanently. Menopause is confirmed after 1 year of no periods.",
     "Menstrual Period":
       "The monthly shedding of blood and tissue from the uterus.",
     "Obstetrician–Gynecologist (Ob-Gyn)":
       "A doctor with special training and education in women’s health.",
-    "Pap Test":
-      "A test in which cells are taken from the cervix (or vagina) to look for signs of cancer.",
-    "Pelvic Exam": "A physical examination of pelvic organs.",
+    "Pap Smear":
+      "A Pap smear is a sampling of cells from the surface of the cervix to screen for cervical cancer or precancer.",
+    "Pelvic Exam":
+      "A physical examination of the female pelvic organs. This typically involves inserting a speculum into the vagina to visualize the vagina and the cervix.",
     "Pelvic Floor Disorders":
       "Disorders that affect the muscles and tissues that support the pelvic organs.",
     "Penis": "The male sex organ.",
@@ -64,8 +66,11 @@ function App() {
   };
 
   const handleHover = (event) => {
-    const term = event.target.innerText.trim().replace(":", "").replace(/\b\w/g, (char) => char.toUpperCase());
-    console.log(term)
+    const term = event.target.innerText
+      .trim()
+      .replace(":", "")
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+    console.log(term);
     const definition = glossary[term];
     if (definition) {
       const tooltip = document.createElement("div");
@@ -90,20 +95,26 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Banner glossary={glossary} handleHover={handleHover}
-            handleMouseOut={handleMouseOut}/>}
-          />
-          <Route path="/faq" element={<Home glossary={glossary} handleHover={handleHover}
-            handleMouseOut={handleMouseOut}/>} />
-          <Route path="/providers" element={<Providers />} />
-          <Route
-            path="/glossary"
             element={
-              <Glossary
+              <Banner
                 glossary={glossary}
+                handleHover={handleHover}
+                handleMouseOut={handleMouseOut}
               />
             }
           />
+          <Route
+            path="/faq"
+            element={
+              <Home
+                glossary={glossary}
+                handleHover={handleHover}
+                handleMouseOut={handleMouseOut}
+              />
+            }
+          />
+          <Route path="/providers" element={<Providers />} />
+          <Route path="/glossary" element={<Glossary glossary={glossary} />} />
         </Routes>
       </BrowserRouter>
     </div>
